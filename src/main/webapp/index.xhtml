@@ -18,14 +18,14 @@
                         <p:outputLabel value = "Login" style="text-align:center" />
                     </f:facet>            
 
-                    <p:outputLabel for="us" value = "Username" />
-                    <p:inputText id="us" value=""/>
+                    <p:outputLabel for="us" value = "Usuario" />
+                    <p:inputText id="us" value="#{indexController.usuario.user}"/>
 
                     <p:outputLabel for="pa" value = "Contraseña" />
-                    <p:password id="pa" value = "" />
+                    <p:password id="pa" value = "#{indexController.usuario.password}" />
 
                     <p:panel style="display:block; text-align: center">
-                         <p:commandButton value="Entrar" />                    
+                        <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
                     </p:panel>                    
 
                 </p:panelGrid>    

@@ -4,18 +4,21 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 05-may-2020, 18:52:21
+    Created on : 05-may-2020, 19:37:48
     Author     : LuisAngel
 */
+
 #principal{
     width: 1024px;
     margin: 0 auto;
-    background-image: url("../img/fondo.jpg");
    
 }
 
-#usuario{
+#sinpermisos{
     margin: 100px auto;
     width: 40%;
     text-align: center;
+    color: #ED1E1E;
+    font-size: 20px;
 }
+
