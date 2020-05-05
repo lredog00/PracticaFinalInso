@@ -5,12 +5,33 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Login</title>
+        <h:outputStylesheet library="css" name="index.css" />
     </h:head>
-    <h:body>
-        <p:selectOneMenu value="#{cancionController.can.idCancion}">
-            <f:selectItems value="#{cancionController.listaCanciones}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCancion}"/>
-        </p:selectOneMenu>
+    <h:body id="principal">
+        <h1 style="text-align:center">BIENVENIDO A NUESTRA PÁGINA WEB</h1>
+        <h:form>
+            <div id="usuario">
+                <p:panelGrid id = "panel" columns = "2" styleClass="ui-noborder showcase-text-align-center">
+   
+                    <f:facet name="header">
+                        <p:outputLabel value = "Login" style="text-align:center" />
+                    </f:facet>            
+
+                    <p:outputLabel for="us" value = "Username" />
+                    <p:inputText id="us" value=""/>
+
+                    <p:outputLabel for="pa" value = "Contraseña" />
+                    <p:password id="pa" value = "" />
+
+                    <p:panel style="display:block; text-align: center">
+                         <p:commandButton value="Entrar" />                    
+                    </p:panel>                    
+
+                </p:panelGrid>    
+            </div>
+        </h:form>
+        
     </h:body>
 </html>
 
