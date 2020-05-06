@@ -13,6 +13,7 @@ import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -22,7 +23,7 @@ import javax.inject.Named;
 @Named
 @ViewScoped
 public class CancionController implements Serializable{
-    
+    @Inject
     private Cancion can;
     private List<Cancion> listaCanciones;
     @EJB
@@ -30,7 +31,7 @@ public class CancionController implements Serializable{
     
     @PostConstruct
     public void inicio(){
-        can = new Cancion();
+       
         listaCanciones=cancionEJB.findAll();
     }
 
@@ -60,4 +61,22 @@ public class CancionController implements Serializable{
         
     }
     
+     public void eliminarCancion(){
+        
+       try{
+            for (Cancion c:listaCanciones) {
+                if(c.getIdCancion()==can.getIdCancion()){
+                    can=c;
+                    break;
+                }
+            }
+            cancionEJB.remove(can);
+        }catch(Exception e){
+            System.out.println("error "+e.getMessage());
+        }
+    }
+     
+     
+     
+     
 }
