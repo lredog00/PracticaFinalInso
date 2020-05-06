@@ -10,7 +10,7 @@ and open the template in the editor.
 #principal{
     width: 1024px;
     margin: 0 auto;
-    background-image: url("../img/fondo.jpg");
+    background-image: url(../img/fondo.jpg);
    
 }
 

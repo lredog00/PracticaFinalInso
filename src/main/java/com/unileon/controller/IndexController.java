@@ -49,7 +49,12 @@ public class IndexController implements Serializable{
         if(usuarioAux==null){
             dir = "permisosinsuficientes.xhtml?faces-redirect=true";
         }else{
-            dir = "/privado/principal.xhtml?faces-redirect=true";
+            if(usuarioAux.getRol().getTipoUsuario().equalsIgnoreCase("S")){
+                dir = "/privado/administrador/principalAdmin.xhtml?faces-redirect=true";
+            }else{
+                dir = "/privado/usuario/principalUser.xhtml?faces-redirect=true";
+            }
+            
         } 
         
         return dir;

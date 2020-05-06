@@ -24,8 +24,8 @@
                     <p:outputLabel for="pa" value = "Contraseña" />
                     <p:password id="pa" value = "#{indexController.usuario.password}" />
 
-                    <p:panel style="display:block; text-align: center">
-                        <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
+                    <p:panel style="display:block; align-items: center;">
+                        <p:commandButton id="bottom" value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
                     </p:panel>                    
 
                 </p:panelGrid>    
