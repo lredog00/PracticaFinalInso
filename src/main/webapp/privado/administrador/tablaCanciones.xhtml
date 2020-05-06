@@ -13,7 +13,7 @@
             <ui:define name="content">
                 <h1>Canciones Disponibles</h1>
                 <h:form id="frmPrincipal">
-                    <p:commandButton value="Nuevo"/>
+                    <p:commandButton value="Nuevo" onclick="PF('wdialogo').show();"/>
                     <p:dataTable var="cancion" value="#{cancionController.listaCanciones}" rows="10" id="tabla"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -40,11 +40,12 @@
                         </p:column>
                         
                         <p:column headerText="Modificar">
-                            <h:outputText value="Modificar" />
+                            <p:commandLink value="Modificar" actionListener="#{cancionController.establecerCancionModificar(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                         </p:column>
                         
                          <p:column headerText="Eliminar">
-                            <h:outputText value="Eliminar" />
+                             <p:commandLink value="Eliminar" actionListener="#{cancionController.establecerCancionEliminar(cancion)}" oncomplete="PF('wdialogo').show();" 
+                                            update=":frmDialogo" />
                         </p:column>
 
                         <f:facet name="paginatorTopLeft">
@@ -74,8 +75,13 @@
                             <p:outputLabel value="Descripcion"/>
                             <p:inputText value="#{cancionController.can.descripcion}"/>
                             
-                            <p:commandButton value="Registrar"/>
-                            <p:commandButton value="Cancelar"/>
+                            <p:commandButton value="Registrar" actionListener="#{cancionController.insertarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'R'}" update=":frmPrincipal:tabla"/>
+                            <p:commandButton value="Modificar" actionListener="#{cancionController.modificarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'M'}" update=":frmPrincipal:tabla"/>
+                            <p:commandButton value="Eliminar" actionListener="#{cancionController.eliminarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'E'}" update=":frmPrincipal:tabla" />
+                            <p:commandButton value="Cancelar" onclick="PF('wdialogo').hide();"/>
                             
                             
                         </p:panelGrid>

@@ -29,12 +29,22 @@ public class CancionController implements Serializable{
     @EJB
     private CancionFacadeLocal cancionEJB;
     
+    private String accion; //Valor 'R' para nuevo 'E' para eliminar y 'M' pata modificar
+    
     @PostConstruct
     public void inicio(){
-       
         listaCanciones=cancionEJB.findAll();
+        accion="R";
+    }
+        
+    public String getAccion() {
+        return accion;
     }
 
+    public void setAccion(String accion) {
+        this.accion = accion;
+    }
+    
     public List<Cancion> getListaCanciones() {
         return listaCanciones;
     }
@@ -55,6 +65,7 @@ public class CancionController implements Serializable{
         
         try{
             cancionEJB.create(can);
+            listaCanciones=cancionEJB.findAll();
         }catch(Exception e){
             System.out.println( "error al insertar la cancion" + e.getMessage());
         }
@@ -64,18 +75,34 @@ public class CancionController implements Serializable{
      public void eliminarCancion(){
         
        try{
-            for (Cancion c:listaCanciones) {
-                if(c.getIdCancion()==can.getIdCancion()){
-                    can=c;
-                    break;
-                }
-            }
+           
             cancionEJB.remove(can);
+            listaCanciones=cancionEJB.findAll();
+            
         }catch(Exception e){
-            System.out.println("error "+e.getMessage());
+            System.out.println("error eliminar cancion"+e.getMessage());
+        }
+    }
+    
+      public void modificarCancion(){
+        
+       try{
+           cancionEJB.edit(can);
+           listaCanciones=cancionEJB.findAll();
+        }catch(Exception e){
+            System.out.println("error al modificar Cancion"+e.getMessage());
         }
     }
      
+    public void establecerCancionModificar(Cancion c){
+        can = c;
+        accion="M";
+    }
+    
+    public void establecerCancionEliminar(Cancion c){
+        can = c;
+        accion="E";
+    }
      
      
      
