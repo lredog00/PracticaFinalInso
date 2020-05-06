@@ -7,13 +7,17 @@ and open the template in the editor.
     Created on : 05-may-2020, 18:52:21
     Author     : LuisAngel
 */
+
 #principal{
     width: 1024px;
     margin: 0 auto;
     background-image: url(../img/fondo.jpg);
    
 }
-
+#boton{
+    align-items: center;
+   
+}   
 #usuario{
     margin: 100px auto;
     width: 40%;
