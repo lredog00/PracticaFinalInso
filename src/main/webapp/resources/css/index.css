@@ -11,15 +11,20 @@ and open the template in the editor.
 #principal{
     width: 1024px;
     margin: 0 auto;
-    background-image: url(../img/fondo.jpg);
+}
+#cuadro{
+    background-color: gray;
    
 }
-#boton{
-    align-items: center;
-   
-}   
+
+#titulo{
+    margin-top: 50px;
+    text-align:center; 
+    color: white;
+}
 #usuario{
     margin: 100px auto;
     width: 40%;
     text-align: center;
+    
 }
