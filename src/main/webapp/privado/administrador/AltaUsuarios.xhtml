@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Dar de alta un nuevo usuario</h1>
+                <p:outputLabel value="Es necesario que complete todos los datos para poder ser registrado con exito"/>
+                
+                <h:form>
+                    <p:fieldset legend="Datos personales" style="margin-bottom:20px">
+                        <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
+                            
+                                    <p:outputLabel for="nom" value="Nombre: " />
+                                    <p:inputText id="nom" value="#{usuarioController.persona.nombre}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    <p:message for="nom"/>
+
+                                    <p:outputLabel for="ap1" value="Primer Apellido: " />
+                                    <p:inputText id="ap1" value="#{usuarioController.persona.apellido1}" required="true" requiredMessage="Primer apellido es un campo obligatorio"/>
+                                    <p:message for="ap1"/>
+                                    
+                                    <p:outputLabel for="ap2" value="Segundo Apellido: " />
+                                    <p:inputText id="ap2" value="#{usuarioController.persona.apellido2}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    <p:message for="ap2"/>
+                                    
+                                    <p:outputLabel for="text4" value="Sexo: *" />
+                                    <p:selectOneButton id="text4" value="#{usuarioController.persona.sexo}">
+                                        <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                                        <f:selectItem itemLabel="Femenino" itemValue="F"/>                                        
+                                    </p:selectOneButton>
+                                    <p:message for="text4"/>                                   
+                                    
+                                    <p:outputLabel for="date" value="Fecha de Nacimiento: " />
+                                    <p:calendar id="date" value="#{usuarioController.persona.fechaNacimiento}" required="true" requiredMessage="Fecha de Nacimiento es un campo obligatorio" locale="es" navigator="true" pattern="yyyy-MM-dd HH:mm:ss" />
+                                    <p:message for="date"/>
+                                    
+                        </p:panelGrid>
+                    </p:fieldset>
+                    <p:fieldset legend="Datos acceso" style="margin-bottom:20px">
+                        <p:panelGrid id="panel2" columns="3" layout="tabular" styleClass="ui-noborder">
+                            
+                                    <p:outputLabel for="rol" value="Rol: " />
+                                    <p:selectOneMenu value="#{usuarioController.rol.idRol}" id="rol" >
+                                        <f:selectItems value="#{usuarioController.listaDeRoles}" var="r" itemLabel="#{r.descripcion}" itemValue="#{r.idRol}"/>
+                                    </p:selectOneMenu> 
+                                    <p:spacer></p:spacer>
+
+                                    <p:outputLabel for="us" value="Nombre de usuario: " />
+                                    <p:inputText id="us" value="#{usuarioController.usuario.user}" required="true" requiredMessage="Usuario es un campo obligatorio"/>
+                                    <p:message for="us"/>
+                                    
+                                    <p:outputLabel for="pass1" value="Password: " />
+                                    <p:password id="pass1" required="true" requiredMessage="Password es un campo obligatorio" match="pass2" feedback="true" validatorMessage="Las claves no coinciden" value="#{usuarioController.usuario.password}"/>
+                                    <p:message for="pass1"/>
+                                    
+                                    <p:outputLabel for="pass2" value="Repita contraseña: " />
+                                    <p:password id="pass2" required="true" requiredMessage="Repita Contraseña es un campo obligatorio"/>
+                                    <p:message for="pass2"/>
+
+                            </p:panelGrid>
+                        </p:fieldset>
+                       
+                    <p:commandButton value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" update="panel1, panel2" />  
+                    <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                    </p:messages>
+                </h:form>
+                <h:outputScript library="js" name="calendario.js"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>
