@@ -105,7 +105,7 @@ public class UsuarioController implements Serializable{
             usuario.setPersona(persona);           
             usuarioEJB.create(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se registró"));
-            listaDeUsuarios = usuarioEJB.findAll();
+            System.out.println("Inserta Usuario");
         }catch(Exception e){
             System.out.println( "error al insertar el usuario" + e.getMessage());
         }

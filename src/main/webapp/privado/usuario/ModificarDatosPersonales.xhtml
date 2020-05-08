@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Pantalla Principal del Usuario normal</h1>
+                
+                <h:form>
+                    <p:panelGrid id="panel1" columns="2" layout="tabular"  styleClass="ui-noborder">
+                            
+                                    <p:outputLabel for="nom" value="Nombre: " />
+                                    <p:inputText id="nom" value="#{usuarioController.setPersona(usuarioController.persona.nombre)}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    
+
+                                    <p:outputLabel for="ap1" value="Primer Apellido: " />
+                                    <p:inputText id="ap1" value="#{usuarioController.setPersona(usuarioController.persona.apellido1)}" required="true" requiredMessage="Primer apellido es un campo obligatorio"/>
+                                   
+                                    
+                                    <p:outputLabel for="ap2" value="Segundo Apellido: " />
+                                    <p:inputText id="ap2" value="#{usuarioController.setPersona(usuarioController.persona.apellido2)}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    
+                                    
+                                    <p:outputLabel for="text4" value="Sexo: *" />
+                                    <p:selectOneButton id="text4" value="#{usuarioController.persona.sexo}">
+                                        <f:selectItem itemLabel="Masculino" itemValue="M"/>
+                                        <f:selectItem itemLabel="Femenino" itemValue="F"/>                                        
+                                    </p:selectOneButton>
+                                                                      
+                                    
+                                    <p:outputLabel for="date" value="Fecha de Nacimiento: " />
+                                    <p:calendar id="date" value="#{usuarioController.persona.fechaNacimiento}" required="true" requiredMessage="Fecha de Nacimiento es un campo obligatorio" locale="es" navigator="true" pattern="yyyy-MM-dd HH:mm:ss" />
+                                    
+                                    
+                        </p:panelGrid>
+                </h:form>
+                
+            </ui:define>
+            
+
+        </ui:composition>
+
+    </body>
+</html>

@@ -16,7 +16,7 @@
                 
                 <h:form>                  
                         
-                    <p:fieldset id="usuario" legend="Datos personales" style="margin-bottom:20px; border-color: transparent">
+                     <p:fieldset legend="Datos personales" style="margin-bottom:20px; border-color: transparent">
                         <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
                             
                                     <p:outputLabel for="nom" value="Nombre: " />
@@ -44,7 +44,7 @@
                                     
                         </p:panelGrid>
                     </p:fieldset>
-                    <p:fieldset id="usuario" legend="Datos acceso" style="margin-bottom:20px; border-color: transparent">
+                    <p:fieldset legend="Datos acceso" style="margin-bottom:20px; border-color: transparent">
                         <p:panelGrid id="panel2" columns="3" layout="tabular" styleClass="ui-noborder">
                             
                                     <p:outputLabel for="rol" value="Rol: " />
@@ -68,16 +68,17 @@
                             </p:panelGrid>
                         </p:fieldset>
                        
-                    <p:commandButton style="text-align: center" value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" update="panel1, panel2" />  
-                    <p:messages id="messages" showDetail="true" closable="true">
+                    <p:commandButton value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" update="panel1, panel2" />                
+                       <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
-                    </p:messages>
-                   
+                        </p:messages>
+                        
                 </h:form>
                
                     
                 <h:outputScript library="js" name="calendario.js"/>
             </ui:define>
+            
 
         </ui:composition>
 
