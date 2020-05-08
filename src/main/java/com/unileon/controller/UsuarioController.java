@@ -31,11 +31,15 @@ import javax.inject.Named;
 public class UsuarioController implements Serializable{
     @Inject
     private Usuario usuario;
+    private List<Usuario> listaDeUsuarios;
+    
     @Inject
     private Persona persona;
+    
     @Inject
     private Rol rol;
     private List<Rol> listaDeRoles;
+    
     
     @EJB
     private RolFacadeLocal rolEJB;
@@ -45,6 +49,7 @@ public class UsuarioController implements Serializable{
     @PostConstruct
     public void inicio(){
         listaDeRoles = rolEJB.findAll();
+        listaDeUsuarios = usuarioEJB.findAll();
     }
 
     public Usuario getUsuario() {
@@ -78,6 +83,14 @@ public class UsuarioController implements Serializable{
     public void setListaDeRoles(List<Rol> listaDeRoles) {
         this.listaDeRoles = listaDeRoles;
     }
+
+    public List<Usuario> getListaDeUsuarios() {
+        return listaDeUsuarios;
+    }
+
+    public void setListaDeUsuarios(List<Usuario> listaDeUsuarios) {
+        this.listaDeUsuarios = listaDeUsuarios;
+    }
     
     public void insertarUsuario(){
         try{
@@ -92,7 +105,25 @@ public class UsuarioController implements Serializable{
             usuario.setPersona(persona);           
             usuarioEJB.create(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se registró"));
+            listaDeUsuarios = usuarioEJB.findAll();
+        }catch(Exception e){
+            System.out.println( "error al insertar el usuario" + e.getMessage());
+        }
+    }
+    
+    public void eliminarUsuario(){
+        try{
             
+            for (Usuario u:listaDeUsuarios) {
+                if(u.getIdUsuario()==usuario.getIdUsuario()){
+                    usuario=u;
+                    break;
+                }
+            }
+            
+            usuarioEJB.remove(usuario);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se elimino el Usuario"));
+            listaDeUsuarios = usuarioEJB.findAll();
         }catch(Exception e){
             System.out.println( "error al insertar el usuario" + e.getMessage());
         }
