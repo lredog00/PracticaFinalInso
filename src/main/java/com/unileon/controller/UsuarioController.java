@@ -128,5 +128,6 @@ public class UsuarioController implements Serializable{
             System.out.println( "error al insertar el usuario" + e.getMessage());
         }
     }
+    
    
 }

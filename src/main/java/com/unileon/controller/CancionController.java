@@ -103,6 +103,9 @@ public class CancionController implements Serializable{
         can = c;
         accion="E";
     }
+    public void establecerCancion(Cancion c){
+        can = c;
+    }
      
      
      

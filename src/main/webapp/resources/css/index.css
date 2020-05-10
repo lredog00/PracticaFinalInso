@@ -9,13 +9,11 @@ and open the template in the editor.
 */
 
 #principal{
+    
     width: 1024px;
     margin: 0 auto;
 }
-#cuadro{
-    background-color: gray;
-   
-}
+
 
 #titulo{
     margin-top: 50px;
@@ -23,8 +21,12 @@ and open the template in the editor.
     color: white;
 }
 #usuario{
-    margin: 100px auto;
-    width: 40%;
-    text-align: center;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: auto;
+   
     
 }

@@ -19,31 +19,31 @@
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
                                  rowsPerPageTemplate="5,10,15">
-                        <p:column headerText="Id">
+                        <p:column headerText="Id" style="width:15px;">
                             <h:outputText value="#{cancion.idCancion}" />
                         </p:column>
 
-                        <p:column headerText="Nombre">
+                        <p:column headerText="Titulo" style="width:200px;">
                             <h:outputText value="#{cancion.nombre}" />
                         </p:column>
 
-                        <p:column headerText="Autor">
+                        <p:column headerText="Autor" style="width:200px;">
                             <h:outputText value="#{cancion.autor}" />
                         </p:column>
 
-                        <p:column headerText="Genero">
+                        <p:column headerText="Genero" style="width:90px;">
                             <h:outputText value="#{cancion.genero}" />
                         </p:column>
                         
-                        <p:column headerText="Descripcion">
+                        <p:column headerText="Descripcion" style="width:290px;">
                             <h:outputText value="#{cancion.descripcion}" />
                         </p:column>
                         
-                        <p:column headerText="Modificar">
+                        <p:column headerText="Modificar" style="width:90px;">
                             <p:commandLink value="Modificar" actionListener="#{cancionController.establecerCancionModificar(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                         </p:column>
                         
-                         <p:column headerText="Eliminar">
+                         <p:column headerText="Eliminar" style="width:90px;">
                              <p:commandLink value="Eliminar" actionListener="#{cancionController.establecerCancionEliminar(cancion)}" oncomplete="PF('wdialogo').show();" 
                                             update=":frmDialogo" />
                         </p:column>
@@ -62,7 +62,7 @@
                 <h:form id="frmDialogo">
                     <p:dialog id="dialogo" widgetVar="wdialogo" resizable="false" closeOnEscape="true"
                               modal="true" draggable="false">
-                        <p:panelGrid columns="2">
+                        <p:panelGrid columns="2" layout="tabular" styleClass="ui-noborder">
                             <p:outputLabel value="Nombre"/>
                             <p:inputText value="#{cancionController.can.nombre}"/>
                             
@@ -73,7 +73,7 @@
                             <p:inputText value="#{cancionController.can.genero}"/>
                             
                             <p:outputLabel value="Descripcion"/>
-                            <p:inputText value="#{cancionController.can.descripcion}"/>
+                            <p:inputTextarea rows="6" cols="33" value="#{cancionController.can.descripcion}" />
                             
                             <p:commandButton value="Registrar" actionListener="#{cancionController.insertarCancion()}" oncomplete="PF('wdialogo').hide();" 
                                              rendered="#{cancionController.accion == 'R'}" update=":frmPrincipal:tabla"/>
