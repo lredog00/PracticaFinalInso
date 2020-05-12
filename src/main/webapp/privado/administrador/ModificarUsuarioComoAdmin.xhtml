@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Modifica el usuario</h1>
+               
+                
+                <h:form>
+                    <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
+                       
+                        
+                        <p:outputLabel for="us" value="Nombre de usuario: " />
+                        <p:inputText id="us" value="#{modificarUsuarioController.usuario.user}" />
+                        
+                        <p:outputLabel for="p" value="Contraseña actual: " />
+                        <p:outputLabel id="p" value="&zwj; &zwj; &rarr; &zwj; &zwj; #{modificarUsuarioController.usuario.password} "/>
+                        
+                         <p:outputLabel for="pass1" value="Password: " />
+                         <p:password redisplay="true" id="pass1" match="pass2" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarUsuarioController.usuario.password}" />
+                         
+                         <p:outputLabel for="pass2" value="Repita contraseña: " />
+                         <p:password id="pass2" redisplay="true" />
+                    </p:panelGrid> 
+                    
+                    <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarUsuarioController.actualizarUsuario()}" action="ModificarUsuarioTabla"/>
+                    
+                    <h:commandLink style="margin: 20px" value="Volver" action="ModificarUsuarioTabla"/>
+                                          
+                </h:form>
+               
+            </ui:define>
+            
+
+        </ui:composition>
+
+    </body>
+</html>

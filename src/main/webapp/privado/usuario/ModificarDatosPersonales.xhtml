@@ -14,10 +14,11 @@
                 <h1>Pantalla Principal del Usuario normal</h1>
                 
                 <h:form>
-                    <p:panelGrid id="panel1" columns="2" layout="tabular"  styleClass="ui-noborder">
+                    <p:panelGrid id="p" columns="2" layout="tabular"  styleClass="ui-noborder" >
                             
                                     <p:outputLabel for="nom" value="Nombre: " />
                                     <p:inputText id="nom" value="" />
+                                    <p:outputLabel value=""/>
                                     
 
                                     <p:outputLabel for="ap1" value="Primer Apellido: " />
@@ -25,7 +26,7 @@
                                    
                                     
                                     <p:outputLabel for="ap2" value="Segundo Apellido: " />
-                                    <p:inputText id="ap2" value="#{usuarioController.setPersona(usuarioController.persona.apellido2)}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    <p:inputText id="ap2" value="#{usuarioController.usuario.persona.apellido2.toString}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
                                     
                                     
                                     <p:outputLabel for="text4" value="Sexo: *" />
@@ -36,10 +37,11 @@
                                                                       
                                     
                                     <p:outputLabel for="date" value="Fecha de Nacimiento: " />
-                                    <p:calendar id="date" value="#{usuarioController.persona.fechaNacimiento}" required="true" requiredMessage="Fecha de Nacimiento es un campo obligatorio" locale="es" navigator="true" pattern="yyyy-MM-dd HH:mm:ss" />
+                                    <p:calendar id="date" value="#{usuarioController.usuario.persona.fechaNacimiento}" required="true" requiredMessage="Fecha de Nacimiento es un campo obligatorio" locale="es" navigator="true" pattern="yyyy-MM-dd HH:mm:ss" />
                                     
                                     
                         </p:panelGrid>
+                    <p:commandButton value="Ver" actionListener="#{usuarioController.establecerUsuario()}" update="p" />
                 </h:form>
                 
             </ui:define>
