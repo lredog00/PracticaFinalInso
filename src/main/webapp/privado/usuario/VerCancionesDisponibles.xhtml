@@ -33,6 +33,7 @@
                         
                         <p:column headerText="Descripcion Breve" style="background-color: #CAB882">
                             <p:commandLink value="Ver" actionListener="#{cancionController.establecerCancion(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
+                           <!-- <p:commandLink value="Ver" actionListener="#{cancionController.establecerCancion(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />-->
                         </p:column>
                         
                        
@@ -50,6 +51,7 @@
                            <f:facet name="header">
                                 <p:outputLabel value = "Descripción Breve" style="text-align:center" />
                             </f:facet>
+                           
                             <p:inputTextarea rows="6" cols="33" value="#{cancionController.can.descripcion}" readonly="true"/>
                         </p:panelGrid>
                         <div style="text-align: center">

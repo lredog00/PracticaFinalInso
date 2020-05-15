@@ -3,6 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
@@ -19,7 +20,14 @@
 
         <div id="top">
             <ui:insert name="top">
-                UNIVERSIDAD DE LEÓN
+                <h1>UNIVERSIDAD DE LEÓN</h1>
+                <h:form>
+                    <p:menubar model="#{menuController.modelo}">
+                        <f:facet name="options">
+                            <p:commandButton value="Cerrar Sesion" icon="pi pi-home" actionListener="#{menuController.destruirSesion()}" />
+                        </f:facet>
+                    </p:menubar>
+                </h:form>
             </ui:insert>
         </div>
 
