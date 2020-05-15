@@ -36,7 +36,8 @@ public class CancionController implements Serializable{
         listaCanciones=cancionEJB.findAll();
         accion="R";
     }
-        
+
+    
     public String getAccion() {
         return accion;
     }
@@ -108,5 +109,9 @@ public class CancionController implements Serializable{
     }
      
      
-     
+     @Override
+    public String toString() {
+        return "CancionController{" + "can=" + can + ", listaCanciones=" + listaCanciones + ", cancionEJB=" + cancionEJB + ", accion=" + accion + '}';
+    }
+        
 }

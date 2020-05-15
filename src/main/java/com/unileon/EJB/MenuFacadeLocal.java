@@ -31,6 +31,6 @@ public interface MenuFacadeLocal {
 
     int count();
     
-    public List<Menu> obtenerMenusUsuario(Usuario us);
+    List<Menu> obtenerMenusUsuario(Usuario us);
     
 }

@@ -9,10 +9,13 @@
         <h:outputStylesheet library="css" name="permisosinsuficientes.css" />
     </h:head>
     <h:body>
-        <p:panelGrid columns="1" id="sinpermisos" styleClass="ui-noborder">
-            <p:outputLabel id="sinpermisos" value="ERROR DE AUTENTIFICACION NO TIENES PERMISOS"></p:outputLabel>
-            <p:commandButton value="Volver" action="index"/>
-        </p:panelGrid>
+        
+            <p:panelGrid columns="1" id="sinpermisos" styleClass="ui-noborder">
+                <p:outputLabel id="sinpermisos" value="ERROR DE AUTENTIFICACION NO TIENES PERMISOS"></p:outputLabel>
+                <h:commandLink value="Volver" action="./../index"/>
+            </p:panelGrid>
+        
+        
         
 
         

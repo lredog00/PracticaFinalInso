@@ -18,15 +18,15 @@
                             
                                     <p:outputLabel for="nom" value="Nombre: " />
                                     <p:inputText id="nom" value="" />
-                                    <p:outputLabel value=""/>
+                                    
                                     
 
                                     <p:outputLabel for="ap1" value="Primer Apellido: " />
-                                    <p:inputText id="ap1" value="#{usuarioController.setPersona(usuarioController.persona.apellido1)}" required="true" requiredMessage="Primer apellido es un campo obligatorio"/>
+                                    <p:inputText id="ap1" value="#{usuarioController.usuario.persona.apellido1}" required="true" requiredMessage="Primer apellido es un campo obligatorio"/>
                                    
                                     
                                     <p:outputLabel for="ap2" value="Segundo Apellido: " />
-                                    <p:inputText id="ap2" value="#{usuarioController.usuario.persona.apellido2.toString}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
+                                    <p:inputText id="ap2" value="#{usuarioController.usuario.persona.apellido2}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
                                     
                                     
                                     <p:outputLabel for="text4" value="Sexo: *" />
@@ -41,7 +41,11 @@
                                     
                                     
                         </p:panelGrid>
-                    <p:commandButton value="Ver" actionListener="#{usuarioController.establecerUsuario()}" update="p" />
+                    <p:commandButton value="Ver" actionListener="#{usuarioController.establecerUsuario()}" update="p" >
+                        
+                        <p:ajax update="p" />
+                    </p:commandButton>
+                    
                 </h:form>
                 
             </ui:define>

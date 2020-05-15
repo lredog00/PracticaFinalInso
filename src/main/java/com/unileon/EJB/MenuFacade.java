@@ -31,7 +31,8 @@ public class MenuFacade extends AbstractFacade<Menu> implements MenuFacadeLocal 
     public MenuFacade() {
         super(Menu.class);
     }
-    @Override
+    
+     @Override
     public List<Menu> obtenerMenusUsuario(Usuario us){
         
         String consulta = "FROM Menu m WHERE m.rol.idRol=:param";
@@ -40,15 +41,16 @@ public class MenuFacade extends AbstractFacade<Menu> implements MenuFacadeLocal 
         
         List<Menu> resultado = query.getResultList();
         if(resultado.isEmpty()){
-            //System.out.println("Este usuario no tiene menus");
+            System.out.println("Este usuario no tiene menus");
              return null;
         }else{
-            /*System.out.println("Se han enviado menus para el usuario");
+            System.out.println("Se han enviado menus para el usuario");
             for(Menu m : resultado){
                 System.out.println("\t Nombre menu: "+m.getNombre());
-            }*/
+            }
             return resultado; 
-        }
+        }        
+        
+        
     }
-    
 }

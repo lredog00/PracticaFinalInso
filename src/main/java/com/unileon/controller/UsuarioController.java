@@ -130,9 +130,9 @@ public class UsuarioController implements Serializable{
         }
     }
     
-    public void reset() {
-        PrimeFaces.current().resetInputs();
+    public void establecerUsuario(){
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        System.out.println(usuario.getUser());
     }
-     
    
 }

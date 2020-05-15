@@ -45,7 +45,7 @@ public class Lista implements Serializable{
     private Persona persona;
     
     @ManyToOne
-    @JoinColumn(name="idCancion")
+    @JoinColumn(name="idCanciones")
     private Cancion cancion;
 
     public int getIdLista() {
