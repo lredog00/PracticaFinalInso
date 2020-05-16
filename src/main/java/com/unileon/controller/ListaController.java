@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -89,8 +91,27 @@ public class ListaController implements Serializable{
              
             lista.setPersona(persona);
             listaEJB.create(lista);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se creo la lista"));
+            arrayDeListas = listaEJB.findAll();
         } catch (Exception e) {
             
+        }
+    }
+    
+    public void eliminarLista(){
+        try {
+            for (Lista l:arrayDeListas) {
+                if(l.getIdLista() ==lista.getIdLista()){
+                    lista=l;
+                    break;
+                }
+            }
+            
+            listaEJB.remove(lista);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se elimino la lista"));
+            arrayDeListas = listaEJB.findAll();
+        } catch (Exception e) {
+            System.out.println("Error al eliminar lista "+e.getMessage());
         }
     }
    

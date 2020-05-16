@@ -12,6 +12,8 @@ import com.unileon.modelo.Cancion;
 import com.unileon.modelo.ContenidoLista;
 import com.unileon.modelo.Lista;
 import java.io.Serializable;
+import java.util.AbstractList;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -29,6 +31,7 @@ public class ContenidoListaController implements Serializable{
     
     @Inject
     private ContenidoLista contenidoLista;
+    private List<ContenidoLista> listaDeContenidosDeListas;
     
     @Inject
     private Lista lista;
@@ -37,6 +40,8 @@ public class ContenidoListaController implements Serializable{
     @Inject
     private Cancion cancion;
     private List<Cancion> listaDeCanciones;
+    
+    private List<Cancion> cancionesDeUnaLista;
     
     
     @EJB
@@ -52,6 +57,7 @@ public class ContenidoListaController implements Serializable{
     public void init(){
         listaDeCanciones = cancionEJB.findAll();
         arrayListas = listaEJB.findAll();
+        listaDeContenidosDeListas = contenidoListaEJB.findAll();
     }
     public ContenidoLista getContenidoLista() {
         return contenidoLista;
@@ -92,6 +98,22 @@ public class ContenidoListaController implements Serializable{
     public void setListaDeCanciones(List<Cancion> listaDeCanciones) {
         this.listaDeCanciones = listaDeCanciones;
     }
+
+    public List<ContenidoLista> getListaDeContenidosDeListas() {
+        return listaDeContenidosDeListas;
+    }
+
+    public void setListaDeContenidosDeListas(List<ContenidoLista> listaDeContenidosDeListas) {
+        this.listaDeContenidosDeListas = listaDeContenidosDeListas;
+    }
+
+    public List<Cancion> getCancionesDeUnaLista() {
+        return cancionesDeUnaLista;
+    }
+
+    public void setCancionesDeUnaLista(List<Cancion> cancionesDeUnaLista) {
+        this.cancionesDeUnaLista = cancionesDeUnaLista;
+    }
     
     public void addCancionToLista(){
         try {
@@ -121,6 +143,15 @@ public class ContenidoListaController implements Serializable{
         }
     }
     
+    public void establecerCancionesLista(Lista lista){
+        cancionesDeUnaLista = new ArrayList<>();
+        for(ContenidoLista c: listaDeContenidosDeListas){
+            if(c.getLista().getIdLista()==lista.getIdLista()){
+                cancionesDeUnaLista.add(c.getCancion());
+            }
+        }
+        
+    }
     
     
     

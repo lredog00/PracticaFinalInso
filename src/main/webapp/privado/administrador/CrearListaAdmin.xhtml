@@ -25,7 +25,6 @@
                             <p:inputTextarea id="des" value="#{listaController.lista.descripcion}" />
                            
                             <p:outputLabel for="persona" value="Persona" />
-                            
                             <p:selectOneMenu value="#{listaController.persona.idPersona}" id="persona" >
                                 <f:selectItems value="#{listaController.listaDePersonas}" var="p" itemLabel="#{p.nombre}" itemValue="#{p.idPersona}"/>
                             </p:selectOneMenu> 
