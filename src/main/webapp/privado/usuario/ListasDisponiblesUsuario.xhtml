@@ -11,25 +11,16 @@
         <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
 
             <ui:define name="content">
-                <h1>Listas</h1>
+                <h1>Listas Personales</h1>
                                
                 <h:form>
                     <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>
                         
-                    <div style="margin-bottom: 20px">
-                        <p:outputLabel value = "Seleccione el id de la lista que desea eliminar "/>
-                        <p:selectOneMenu value="#{listaController.lista.idLista}">
-                            <f:selectItems value="#{listaController.arrayDeListas}" var="l" itemLabel="#{l.idLista}" itemValue="#{l.idLista}"/>
-                       </p:selectOneMenu>
-                        <p:outputLabel value="&zwj; &zwj; &rarr; &zwj; &zwj;  "/>
-                        <p:commandButton value = "Eliminar" actionListener = "#{listaController.eliminarLista()}" update="tabla"/>
-                    </div>
-                    
-                    
+                                       
                      <p:outputLabel value="Listas disponibles en la aplicación" style="margin: 100px auto; text-decoration: line-through black; font-weight: bold;" /> 
-                     <p:dataTable id="tabla" var="lista" value="#{listaController.arrayDeListas}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
+                     <p:dataTable id="tabla" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
                         <p:column headerText="Id" style="background-color: #CAB882">
                             <h:outputText value="#{lista.idLista}" />
                         </p:column>
