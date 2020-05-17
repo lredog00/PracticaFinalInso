@@ -12,7 +12,6 @@ import com.unileon.modelo.Cancion;
 import com.unileon.modelo.ContenidoLista;
 import com.unileon.modelo.Lista;
 import java.io.Serializable;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -43,6 +42,7 @@ public class ContenidoListaController implements Serializable{
     
     private List<Cancion> cancionesDeUnaLista;
     
+   
     
     @EJB
     private ListaFacadeLocal listaEJB;
@@ -58,7 +58,11 @@ public class ContenidoListaController implements Serializable{
         listaDeCanciones = cancionEJB.findAll();
         arrayListas = listaEJB.findAll();
         listaDeContenidosDeListas = contenidoListaEJB.findAll();
+       
     }
+
+    
+    
     public ContenidoLista getContenidoLista() {
         return contenidoLista;
     }
@@ -117,8 +121,8 @@ public class ContenidoListaController implements Serializable{
     
     public void addCancionToLista(){
         try {
-            List<Cancion> listCan = null;
-            int indice = 0;
+            
+                       
             for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
@@ -132,10 +136,9 @@ public class ContenidoListaController implements Serializable{
                 }
             }
             
-           
-                contenidoLista.setCancion(cancion);
-                contenidoLista.setLista(lista);
-                contenidoListaEJB.create(contenidoLista);
+           contenidoLista.setCancion(cancion);
+           contenidoLista.setLista(lista);
+           contenidoListaEJB.create(contenidoLista);
                 
             
         } catch (Exception e) {
@@ -150,6 +153,7 @@ public class ContenidoListaController implements Serializable{
                 cancionesDeUnaLista.add(c.getCancion());
             }
         }
+        
         
     }
     

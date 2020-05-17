@@ -14,13 +14,9 @@
                 <h1>Listas Personales</h1>
                                
                 <h:form>
-                    <p:messages id="messages" showDetail="true" closable="true">
-                            <p:autoUpdate />
-                     </p:messages>
-                        
-                                       
+                   
                      <p:outputLabel value="Listas disponibles en la aplicación" style="margin: 100px auto; text-decoration: line-through black; font-weight: bold;" /> 
-                     <p:dataTable id="tabla" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
+                     <p:dataTable id="tabla1" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
                         <p:column headerText="Id" style="background-color: #CAB882">
                             <h:outputText value="#{lista.idLista}" />
                         </p:column>
@@ -46,10 +42,10 @@
                         <p:column headerText="Canciones" style="background-color: #CAB882">
                             <p:commandLink value="Ver Canciones" actionListener="#{contenidoListaController.establecerCancionesLista(lista)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                         </p:column>
-                        
                                          
                     </p:dataTable>
-                    
+                     
+                     
                    
                 </h:form>
                 
@@ -58,7 +54,7 @@
                               modal="true" draggable="false">
                         <p:panelGrid columns="1" layout="tabular" styleClass="ui-noborder">
                            
-                            <p:dataList value="#{contenidoListaController.cancionesDeUnaLista}" var="can" type="">
+                            <p:dataList value="#{contenidoListaController.cancionesDeUnaLista}" var="can" type="ordered">
                                 <f:facet name="header">
                                     <p:outputLabel value = "Canciones" style="text-align:center" />
                                 </f:facet>

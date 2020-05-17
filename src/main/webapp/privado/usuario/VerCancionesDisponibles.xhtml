@@ -15,9 +15,7 @@
                 <h:form>
                     <p:dataTable id="tabla" var="cancion" value="#{cancionController.listaCanciones}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
                         
-                        <p:column headerText="Añadir" style="background-color: #CAB882; width: 60px; align-items: center">
-                            <p:selectBooleanCheckbox /> <!--FALTA AÑADIR EL VALUE AL SELECT PARA AÑADIRLO A LA LISTA-->
-                        </p:column>
+                        
                         
                         <p:column headerText="Titulo" style="background-color: #CAB882">
                             <h:outputText value="#{cancion.nombre}" />
@@ -37,16 +35,7 @@
                         </p:column>
                                          
                     </p:dataTable>
-                    <p:outputLabel value="Elegir lista" />
-                    <p:selectOneMenu value="#{contenidoListaController.lista.idLista}" id="lista" >
-                        <f:selectItems value="#{contenidoListaController.arrayListas}" var="l" itemLabel="#{l.nombreLista}" itemValue="#{l.idLista}"/>
-                    </p:selectOneMenu> 
-                    <p:outputLabel value="Elegir cancion" />
-                    <p:selectOneMenu value="#{contenidoListaController.cancion.idCancion}" id="can" >
-                        <f:selectItems value="#{contenidoListaController.listaDeCanciones}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCancion}"/>
-                    </p:selectOneMenu>
                     
-                    <p:commandButton value="Añadir Cancion" actionListener="#{contenidoListaController.addCancionToLista()}" />
                 </h:form>
                 
                 <h:form id="frmDialogo">

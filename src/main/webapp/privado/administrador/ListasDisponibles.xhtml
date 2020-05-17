@@ -67,7 +67,7 @@
                               modal="true" draggable="false">
                         <p:panelGrid columns="1" layout="tabular" styleClass="ui-noborder">
                            
-                            <p:dataList value="#{contenidoListaController.cancionesDeUnaLista}" var="can" type="">
+                            <p:dataList value="#{contenidoListaController.cancionesDeUnaLista}" var="can" type="ordered">
                                 <f:facet name="header">
                                     <p:outputLabel value = "Canciones" style="text-align:center" />
                                 </f:facet>
