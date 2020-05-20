@@ -11,6 +11,7 @@ import com.unileon.modelo.Lista;
 import com.unileon.modelo.Persona;
 import com.unileon.modelo.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -40,9 +41,14 @@ public class ListaController implements Serializable{
     @EJB
     private ListaFacadeLocal listaEJB;
     
+    
+    
     private List<Lista> arrayDeListas;
     
     private Usuario usuario;
+    
+    @Inject
+    private ListasPersonalesController objetoLPC;
     
     @PostConstruct
     public void init(){
@@ -50,6 +56,7 @@ public class ListaController implements Serializable{
         listaDePersonas = personaEJB.findAll();
         usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
         persona = usuario.getPersona();
+        
     }
 
     public List<Persona> getListaDePersonas() {
@@ -100,7 +107,8 @@ public class ListaController implements Serializable{
             lista.setPersona(persona);
             listaEJB.create(lista);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se creo la lista"));
-            arrayDeListas = listaEJB.findAll();
+            
+            objetoLPC.init();
         } catch (Exception e) {
             
         }

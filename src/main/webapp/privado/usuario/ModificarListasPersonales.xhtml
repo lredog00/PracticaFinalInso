@@ -7,7 +7,7 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     
     <body>
-
+        <p:autoUpdate />
         <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
 
             <ui:define name="content">
@@ -15,42 +15,36 @@
                                
                 <h:form>
                    
-                      <p:messages id="messages" showDetail="true" closable="true">
+                       <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>
-                    <div style="margin: 40px">
-                        <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
-                            <p:outputLabel value="Elegir lista" />
-                            <p:selectOneMenu value="#{listasPersonalesController.lista.idLista}" id="lista" >
-                                <f:selectItems value="#{listasPersonalesController.listasPersonales}" var="l" itemLabel="#{l.nombreLista}" itemValue="#{l.idLista}"/>
-                            </p:selectOneMenu>
-
-                            <p:outputLabel value="Elegir cancion" />
-                            <p:selectOneMenu value="#{listasPersonalesController.cancion.idCancion}" id="can" >
-                                <f:selectItems value="#{listasPersonalesController.listaDeCanciones}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCancion}"/>
-                            </p:selectOneMenu>
-                                                        
-                            <p:commandButton value="Añadir Cancion" actionListener="#{listasPersonalesController.addCancionToLista()}" /> 
-                            <p:spacer></p:spacer>
-                        </p:panelGrid>
+                    
+                         <div style="margin: 40px">
                         
-                    </div>
-                    <div style="margin: 40px">
-                        <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
-                            <p:outputLabel value="Elegir lista" />
-                            <p:selectOneMenu value="#{listasPersonalesController.lista.idLista}" id="listaE" >
-                                <f:selectItems value="#{listasPersonalesController.listasPersonales}" var="l" itemLabel="#{l.nombreLista}" itemValue="#{l.idLista}"/>
-                            </p:selectOneMenu>
+                            <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
 
-                            <p:outputLabel value="Elegir cancion" />
-                            <p:selectOneMenu value="#{listasPersonalesController.cancion.idCancion}" id="canE" >
-                                <f:selectItems value="#{listasPersonalesController.listaDeCanciones}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCancion}"/>
-                            </p:selectOneMenu>
+                                <p:outputLabel value="Elegir lista" />
+                                <p:selectOneMenu value="#{contenidoListaController.lista.idLista}" id="lista" >
+                                    <f:selectItems value="#{contenidoListaController.listasPersonales}" var="l" itemLabel="#{l.nombreLista}" itemValue="#{l.idLista}"/>
+                                </p:selectOneMenu>
 
-                            <p:commandButton value="Eliminar Cancion" actionListener="#{listasPersonalesController.eliminarCancionDeLista()}" />
-                        </p:panelGrid>
-                        
-                    </div>            
+                                <p:outputLabel value="Elegir cancion" />
+                                <p:selectOneMenu value="#{contenidoListaController.cancion.idCancion}" id="can" >
+                                    <f:selectItems value="#{contenidoListaController.listaDeCanciones}" var="c" itemLabel="#{c.nombre}" itemValue="#{c.idCancion}"/>
+                                </p:selectOneMenu>
+
+                                <p:commandButton value="Añadir Cancion" actionListener="#{contenidoListaController.addCancionToLista()}" action="ListasDisponiblesUsuario" >
+                                   
+                                </p:commandButton> 
+                                <p:commandButton value="Eliminar Cancion" actionListener="#{contenidoListaController.eliminarCancionDeLista()}" action="ListasDisponiblesUsuario" >
+                                  
+                                </p:commandButton>
+                            </p:panelGrid>
+
+                         </div>
+                         
+                    
+                    
                                        
                      
                      

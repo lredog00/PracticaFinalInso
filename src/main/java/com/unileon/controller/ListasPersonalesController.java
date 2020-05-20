@@ -141,94 +141,15 @@ public class ListasPersonalesController implements Serializable{
         this.usuario = usuario;
     }
 
-    private void obtenerListas() {
+    public void obtenerListas() {
         System.out.println("usuario "+usuario.getPersona().getIdPersona());
          for(Lista l: arrayListas){
             if(l.getPersona().getIdPersona()==usuario.getPersona().getIdPersona()){
                 listasPersonales.add(l);
             }
         }
+       
     }
     
-     public void addCancionToLista(){
-        try {
-            
-                       
-            for(Cancion c: listaDeCanciones){
-                if(c.getIdCancion() == cancion.getIdCancion()){
-                    cancion = c;
-                   
-                }
-            }
-            for(Lista l : listasPersonales){
-                if(l.getIdLista() == lista.getIdLista()){
-                    lista = l;
-                    break;
-                }
-            }
-            
-           
-           boolean cancionrepetida=false;
-            for (ContenidoLista cl: listaDeContenidosDeListas){
-                
-                if((cancion.getIdCancion()==cl.getCancion().getIdCancion())&&(lista.getIdLista()==cl.getLista().getIdLista())){
-                    cancionrepetida = true;
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Cancion ya se encuentra en la lista"));
-                    break;
-                }
-                
-            }
-            
-            if(!cancionrepetida){
-                contenidoLista.setCancion(cancion);
-                contenidoLista.setLista(lista);
-                contenidoListaEJB.create(contenidoLista);
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Cancion añadida"));
-
-            }
-           
-                
-            
-        } catch (Exception e) {
-            System.out.println("error al añadir "+e.getMessage());
-        }
-    }
-     
-     public void eliminarCancionDeLista(){
-         try {
-             for(Lista l : listasPersonales){
-                if(l.getIdLista() == lista.getIdLista()){
-                    lista = l;
-                    break;
-                }
-            }
-             for(Cancion c: listaDeCanciones){
-                if(c.getIdCancion() == cancion.getIdCancion()){
-                    cancion = c;
-                   
-                }
-            }
-             
-            boolean cancionSIesta = false;
-            for (ContenidoLista cl: listaDeContenidosDeListas){
-                if(cl.getLista().getIdLista()==lista.getIdLista()&&cancion.getIdCancion()==cl.getCancion().getIdCancion()){
-                    //eliminar
-                    System.out.println("entra");
-                    contenidoLista=cl;
-                    contenidoListaEJB.remove(contenidoLista);                   
-                    listaDeContenidosDeListas = contenidoListaEJB.findAll();
-                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Cancion eliminada de la lista"));
-                    cancionSIesta = true;
-                    break;
-                }
-                
-            }
-             System.out.println("boleano "+cancionSIesta);
-            if(!cancionSIesta){
-                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "La cancion no se encuentra es esa lista"));
-
-            }
-         } catch (Exception e) {
-         }
-     }
+    
 }

@@ -79,8 +79,8 @@ public class Cancion implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 7;
-        hash = 67 * hash + this.IdCancion;
+        int hash = 3;
+        hash = 23 * hash + this.IdCancion;
         return hash;
     }
 
@@ -101,6 +101,8 @@ public class Cancion implements Serializable{
         }
         return true;
     }
+
+  
 
     @Override
     public String toString() {

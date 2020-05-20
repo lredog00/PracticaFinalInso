@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -35,6 +37,12 @@ public class ContenidoListaController implements Serializable{
     @Inject
     private Lista lista;
     private List<Lista> arrayListas;
+    
+    @Inject
+    private ListasPersonalesController objetoDeListasPersonalesController;
+    
+    private List<Lista> listasPersonales;
+    
     
     @Inject
     private Cancion cancion;
@@ -58,7 +66,18 @@ public class ContenidoListaController implements Serializable{
         listaDeCanciones = cancionEJB.findAll();
         arrayListas = listaEJB.findAll();
         listaDeContenidosDeListas = contenidoListaEJB.findAll();
+        
        
+        listasPersonales = objetoDeListasPersonalesController.getListasPersonales();
+       
+    }
+
+    public List<Lista> getListasPersonales() {
+        return listasPersonales;
+    }
+
+    public void setListasPersonales(List<Lista> listasPersonales) {
+        this.listasPersonales = listasPersonales;
     }
 
     
@@ -119,14 +138,17 @@ public class ContenidoListaController implements Serializable{
         this.cancionesDeUnaLista = cancionesDeUnaLista;
     }
     
-    public void addCancionToLista(){
+    
+    
+    
+     public void addCancionToLista(){
         try {
             
-                       
+            System.out.println("cancion "+cancion.getIdCancion());           
             for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
-                   
+                    break; //Faltaba brak
                 }
             }
             for(Lista l : arrayListas){
@@ -135,11 +157,76 @@ public class ContenidoListaController implements Serializable{
                     break;
                 }
             }
-            
-           contenidoLista.setCancion(cancion);
-           contenidoLista.setLista(lista);
-           contenidoListaEJB.create(contenidoLista);
+           
+           boolean cancionrepetida=false;
+           
+            for (ContenidoLista cl: listaDeContenidosDeListas){
                 
+                if((cancion.getIdCancion()==cl.getCancion().getIdCancion())&&(lista.getIdLista()==cl.getLista().getIdLista())){
+                    cancionrepetida = true;
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Cancion ya se encuentra en la lista"));
+                    break;
+                }
+                
+            }
+            
+            
+            if(!cancionrepetida){
+                contenidoLista.setCancion(cancion);
+                contenidoLista.setLista(lista);
+                contenidoListaEJB.create(contenidoLista);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Cancion añadida"));
+
+            }
+            listaDeContenidosDeListas = contenidoListaEJB.findAll();
+           
+                
+            
+        } catch (Exception e) {
+            System.out.println("error al añadir "+e.getMessage());
+        }
+    }
+    public void eliminarCancionDeLista(){
+        try {
+            
+                       
+          for(Lista l : arrayListas){
+                if(l.getIdLista() == lista.getIdLista()){
+                    lista = l;
+                    break;
+                }
+            }
+             for(Cancion c: listaDeCanciones){
+                if(c.getIdCancion() == cancion.getIdCancion()){
+                    cancion = c;
+                    break;
+                   
+                }
+            }
+             
+            boolean cancionSIesta = false;
+             
+            for (ContenidoLista cl: listaDeContenidosDeListas){
+               
+                
+                if(cl.getLista().getIdLista()==lista.getIdLista()&&cancion.getIdCancion()==cl.getCancion().getIdCancion()){
+                    //eliminar
+                    System.out.println("entra");
+                    contenidoLista=cl;
+                    contenidoListaEJB.remove(contenidoLista);                   
+                    listaDeContenidosDeListas = contenidoListaEJB.findAll();
+                    FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Cancion eliminada de la lista"));
+                    cancionSIesta = true;
+                    break;
+                }
+                
+            }
+           
+            
+            if(!cancionSIesta){
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "La cancion no se encuentra es esa lista"));
+
+            }
             
         } catch (Exception e) {
             System.out.println("error al añadir "+e.getMessage());
@@ -149,6 +236,7 @@ public class ContenidoListaController implements Serializable{
     public void establecerCancionesLista(Lista lista){
         cancionesDeUnaLista = new ArrayList<>();
         for(ContenidoLista c: listaDeContenidosDeListas){
+           
             if(c.getLista().getIdLista()==lista.getIdLista()){
                 cancionesDeUnaLista.add(c.getCancion());
             }
