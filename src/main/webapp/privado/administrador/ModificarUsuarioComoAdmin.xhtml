@@ -25,10 +25,8 @@
                         <p:outputLabel id="p" value="&zwj; &zwj; &rarr; &zwj; &zwj; #{modificarUsuarioController.usuario.password} "/>
                         
                          <p:outputLabel for="pass1" value="Password: " />
-                         <p:password redisplay="true" id="pass1" match="pass2" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarUsuarioController.usuario.password}" />
+                         <p:password redisplay="true" id="pass1" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarUsuarioController.usuario.password}" />
                          
-                         <p:outputLabel for="pass2" value="Repita contraseña: " />
-                         <p:password id="pass2" redisplay="true" />
                     </p:panelGrid> 
                     
                     <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarUsuarioController.actualizarUsuario()}" action="ModificarUsuarioTabla"/>
