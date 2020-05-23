@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Canciones Disponibles</h1>
+                <h:form id="frmPrincipal">
+                    <p:commandButton value="Nuevo" onclick="PF('wdialogo').show();"/>
+                    <p:dataTable var="cancion" value="#{cancionController.listaCanciones}" rows="10" id="tabla"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} of {totalRecords} records"
+                                 rowsPerPageTemplate="5,10,15">
+                        <p:column headerText="Id" style="width:15px;">
+                            <h:outputText value="#{cancion.idCancion}" />
+                        </p:column>
+
+                        <p:column headerText="Titulo" style="width:200px;">
+                            <h:outputText value="#{cancion.nombre}" />
+                        </p:column>
+
+                        <p:column headerText="Autor" style="width:200px;">
+                            <h:outputText value="#{cancion.autor}" />
+                        </p:column>
+
+                        <p:column headerText="Genero" style="width:90px;">
+                            <h:outputText value="#{cancion.genero}" />
+                        </p:column>
+                        
+                        <p:column headerText="Descripcion" style="width:290px;">
+                            <h:outputText value="#{cancion.descripcion}" />
+                        </p:column>
+                        
+                        <p:column headerText="Modificar" style="width:90px;">
+                            <p:commandLink value="Modificar" actionListener="#{cancionController.establecerCancionModificar(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
+                        </p:column>
+                        
+                         <p:column headerText="Eliminar" style="width:90px;">
+                             <p:commandLink value="Eliminar" actionListener="#{cancionController.establecerCancionEliminar(cancion)}" oncomplete="PF('wdialogo').show();" 
+                                            update=":frmDialogo" />
+                        </p:column>
+
+                        <f:facet name="paginatorTopLeft">
+                            <p:commandButton type="button" icon="pi pi-refresh" />
+                        </f:facet>
+
+                        <f:facet name="paginatorBottomRight">
+                            <p:commandButton type="button" icon="pi pi-cloud-upload" />
+                        </f:facet>
+
+                    </p:dataTable>
+                </h:form>
+                
+                <h:form id="frmDialogo">
+                    <p:dialog id="dialogo" widgetVar="wdialogo" resizable="false" closeOnEscape="true"
+                              modal="true" draggable="false">
+                        <p:panelGrid columns="2" layout="tabular" styleClass="ui-noborder">
+                            <p:outputLabel value="Nombre"/>
+                            <p:inputText value="#{cancionController.can.nombre}"/>
+                            
+                            <p:outputLabel value="Autor"/>
+                            <p:inputText value="#{cancionController.can.autor}"/>
+                            
+                            <p:outputLabel value="Genero"/>
+                            <p:inputText value="#{cancionController.can.genero}"/>
+                            
+                            <p:outputLabel value="Descripcion"/>
+                            <p:inputTextarea rows="6" cols="33" value="#{cancionController.can.descripcion}" />
+                            
+                            <p:commandButton value="Registrar" actionListener="#{cancionController.insertarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'R'}" update=":frmPrincipal:tabla"/>
+                            <p:commandButton value="Modificar" actionListener="#{cancionController.modificarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'M'}" update=":frmPrincipal:tabla"/>
+                            <p:commandButton value="Eliminar" actionListener="#{cancionController.eliminarCancion()}" oncomplete="PF('wdialogo').hide();" 
+                                             rendered="#{cancionController.accion == 'E'}" update=":frmPrincipal:tabla" />
+                            <p:commandButton value="Cancelar" onclick="PF('wdialogo').hide();"/>
+                            
+                            
+                        </p:panelGrid>
+                    </p:dialog>
+                        
+                    
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

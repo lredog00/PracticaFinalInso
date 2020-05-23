@@ -9,17 +9,24 @@ and open the template in the editor.
 */
 
 #principal{
+    
     width: 1024px;
     margin: 0 auto;
-    background-image: url(../img/fondo.jpg);
-   
 }
-#boton{
-    align-items: center;
-   
-}   
+
+
+#titulo{
+    margin-top: 50px;
+    text-align:center; 
+    color: white;
+}
 #usuario{
-    margin: 100px auto;
-    width: 40%;
-    text-align: center;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    box-sizing: border-box;
+    padding: auto;
+   
+    
 }

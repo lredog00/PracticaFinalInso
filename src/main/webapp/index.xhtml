@@ -7,16 +7,17 @@
     <h:head>
         <title>Login</title>
         <h:outputStylesheet library="css" name="index.css" />
+        
     </h:head>
-    <h:body id="principal">
-        <h1 style="text-align:center">BIENVENIDO A NUESTRA PÁGINA WEB</h1>
+    <h:body id="principal" style="background-image: url(resources/img/login.jpg)">
+        <h1 id="titulo">BIENVENIDO A NUESTRA PÁGINA WEB</h1>
         <h:form>
             <div id="usuario">
-                <p:panelGrid id = "panel" columns = "2" styleClass="ui-noborder showcase-text-align-center">
-   
+                <p:panelGrid id = "panel" style="background-color: white" columns = "2" styleClass="ui-noborder showcase-text-align-center">
+                    
                     <f:facet name="header">
-                        <p:outputLabel value = "Login" style="text-align:center" />
-                    </f:facet>            
+                       <p:outputLabel value = "Login" style="text-align:center" />
+                    </f:facet>                              
 
                     <p:outputLabel for="us" value = "Usuario" />
                     <p:inputText id="us" value="#{indexController.usuario.user}"/>
@@ -24,9 +25,8 @@
                     <p:outputLabel for="pa" value = "Contraseña" />
                     <p:password id="pa" value = "#{indexController.usuario.password}" />
 
-                    <p:panel style="display:block; align-items: center;">
-                        <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
-                    </p:panel>                    
+                    <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
+                                      
 
                 </p:panelGrid>    
             </div>

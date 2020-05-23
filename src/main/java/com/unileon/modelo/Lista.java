@@ -45,7 +45,7 @@ public class Lista implements Serializable{
     private Persona persona;
     
     @ManyToOne
-    @JoinColumn(name="idCancion")
+    @JoinColumn(name="idCanciones")
     private Cancion cancion;
 
     public int getIdLista() {
@@ -98,8 +98,8 @@ public class Lista implements Serializable{
 
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 97 * hash + this.IdLista;
+        int hash = 7;
+        hash = 71 * hash + this.IdLista;
         return hash;
     }
 
@@ -120,6 +120,8 @@ public class Lista implements Serializable{
         }
         return true;
     }
+
+    
 
     @Override
     public String toString() {
