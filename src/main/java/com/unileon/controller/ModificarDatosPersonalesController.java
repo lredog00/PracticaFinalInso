@@ -40,6 +40,9 @@ public class ModificarDatosPersonalesController implements Serializable{
     @Inject
     private Usuario usuario;
     
+    private String password;
+    private String passwordNueva;
+    
     //Me traigo toda la clase con los valores que tenia eso es la inyeccion de dependencias
     @Inject
     private ListarYFiltrarUsuariosController usuarios;    
@@ -48,6 +51,8 @@ public class ModificarDatosPersonalesController implements Serializable{
     public void init(){
        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
        persona = usuario.getPersona();
+       password="";
+       passwordNueva="";
     }
 
     public Usuario getUsuario() {
@@ -56,6 +61,22 @@ public class ModificarDatosPersonalesController implements Serializable{
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPasswordNueva() {
+        return passwordNueva;
+    }
+
+    public void setPasswordNueva(String passwordNueva) {
+        this.passwordNueva = passwordNueva;
     }
     
     public void actualizarPersona(){
@@ -66,6 +87,26 @@ public class ModificarDatosPersonalesController implements Serializable{
              System.out.println("Error al actualizar el usuario "+e.getMessage());
         }
  
+    }
+    
+    public void actualizarUsuario(){
+        try {
+            
+            if(password.compareTo(usuario.getPassword())==0){
+                if(passwordNueva.compareTo("")==0){
+                    passwordNueva=password;
+                }
+                usuario.setPassword(passwordNueva);
+                usuarioEJB.edit(usuario);
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Datos de Usuario modificados"));
+            }else{
+                FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error", "Contraseña actual no es correcta"));
+            }
+            
+            
+        } catch (Exception e) {
+            System.out.println("Error al actualizar el usuario "+e.getMessage());
+        }
     }
 
 
