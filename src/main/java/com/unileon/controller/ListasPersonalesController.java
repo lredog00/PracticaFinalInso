@@ -29,7 +29,7 @@ import javax.inject.Named;
  * @author LuisAngel
  */
 @Named
-@SessionScoped
+@ViewScoped
 public class ListasPersonalesController implements Serializable{
     
     
@@ -41,6 +41,7 @@ public class ListasPersonalesController implements Serializable{
     private Lista lista;
     private List<Lista> arrayListas;
     private List<Lista> listasPersonales=new ArrayList<>();
+    private List<Lista> listasPersonalesAux;
     
     @Inject
     private Cancion cancion;
@@ -60,12 +61,12 @@ public class ListasPersonalesController implements Serializable{
 
     @PostConstruct
     public void init(){
-        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
-        listaDeCanciones = cancionEJB.findAll();
+       
         arrayListas = listaEJB.findAll();
+        listasPersonalesAux = listaEJB.findAll();
         listaDeContenidosDeListas = contenidoListaEJB.findAll();
         //Sacar la listas del usuario que esta conectado
-       obtenerListas();
+       obtenerListas(listasPersonalesAux);
       
     }
 
@@ -141,9 +142,10 @@ public class ListasPersonalesController implements Serializable{
         this.usuario = usuario;
     }
 
-    public void obtenerListas() {
-        System.out.println("usuario "+usuario.getPersona().getIdPersona());
-         for(Lista l: arrayListas){
+    public void obtenerListas(List<Lista> listaAux) {
+        usuario = (Usuario) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("usuario");
+        listaDeCanciones = cancionEJB.findAll();
+         for(Lista l: listaAux){
             if(l.getPersona().getIdPersona()==usuario.getPersona().getIdPersona()){
                 listasPersonales.add(l);
             }
