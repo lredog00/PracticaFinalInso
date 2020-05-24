@@ -21,7 +21,7 @@
                    
                        
                     <p:fieldset legend="Cambiar Nombre Usuario" style="margin-bottom:20px; border-color: transparent">
-                        <p:panelGrid columns="3" layout="tabular"  styleClass="ui-noborder">
+                        <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
                              <p:outputLabel for="us" value="Nombre de usuario: " />
                             <p:inputText id="us" value="#{modificarDatosPersonalesController.usuario.user}" />  
                         </p:panelGrid>
@@ -31,7 +31,7 @@
                        
                         
                         <p:fieldset legend="Cambiar contraseña" style="margin-bottom:10px; border-color: transparent">
-                             <p:panelGrid columns="3" layout="tabular"  styleClass="ui-noborder">
+                            <p:panelGrid id="panel2" columns="3" layout="tabular"  styleClass="ui-noborder">
                                 <p:outputLabel for="p" value="Contraseña actual: " />
                                 <p:password id="p" required="true" requiredMessage="Contraseña actual es un campo obligatorio" value="#{modificarDatosPersonalesController.password}" />
                                  <p:spacer/>
@@ -50,7 +50,7 @@
                          
                      
                     
-                    <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarDatosPersonalesController.actualizarUsuario()}" />
+                    <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarDatosPersonalesController.actualizarUsuario()}" update="panel1, panel2" />
                     
                   
                                           
