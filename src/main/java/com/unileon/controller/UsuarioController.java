@@ -12,6 +12,7 @@ import com.unileon.modelo.Persona;
 import com.unileon.modelo.Rol;
 import com.unileon.modelo.Usuario;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -40,6 +41,8 @@ public class UsuarioController implements Serializable{
     @Inject
     private Rol rol;
     private List<Rol> listaDeRoles;
+    private List<Rol> listaDeRolesUser = new ArrayList<>();
+    
     
     
     @EJB
@@ -51,8 +54,28 @@ public class UsuarioController implements Serializable{
     public void inicio(){
         listaDeRoles = rolEJB.findAll();
         listaDeUsuarios = usuarioEJB.findAll();
+        obtenerListaRoles(listaDeRolesUser);
+        
+    }
+    
+    public void obtenerListaRoles(List<Rol> listaRol){
+        for(Rol r:listaDeRoles){
+            if(r.getTipoUsuario().compareTo("U")==0){
+                listaDeRolesUser.add(r);
+            }
+        }
     }
 
+    public List<Rol> getListaDeRolesUser() {
+        return listaDeRolesUser;
+    }
+
+    public void setListaDeRolesUser(List<Rol> listaDeRolesUser) {
+        this.listaDeRolesUser = listaDeRolesUser;
+    }
+    
+    
+    
     public Usuario getUsuario() {
         return usuario;
     }
@@ -106,7 +129,7 @@ public class UsuarioController implements Serializable{
             usuario.setPersona(persona);           
             usuarioEJB.create(usuario);
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se registró"));
-            System.out.println("Inserta Usuario");
+           
         }catch(Exception e){
             System.out.println( "error al insertar el usuario" + e.getMessage());
         }
