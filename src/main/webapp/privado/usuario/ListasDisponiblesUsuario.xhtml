@@ -17,8 +17,13 @@
                     <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>
-                     <p:outputLabel value="Listas disponibles" style="margin: 100px auto; text-decoration: line-through black; font-weight: bold;" /> 
-                     <p:dataTable id="tabla1" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;">
+                     <p:outputLabel value="Listas disponibles" style="margin: 100px auto; font-weight: bold;" /> 
+                     <p:dataTable id="tabla1" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;"
+                                 rows="10"
+                                 paginator="true"
+                                 paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                                 currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
+                                 rowsPerPageTemplate="5,10,15" >
                         <p:column headerText="Id" style="background-color: #CAB882" >
                             <h:outputText value="#{lista.idLista}" />
                         </p:column>
@@ -32,7 +37,7 @@
                         </p:column>
                         
                         
-                        <p:column headerText="Fecha De Creaacion" style="background-color: #CAB882">
+                        <p:column headerText="Fecha De Creación" style="background-color: #CAB882">
                             <h:outputText value="#{lista.fecha.date}/#{lista.fecha.month+1}/#{lista.fecha.year+1900}" />
                         </p:column>
                         

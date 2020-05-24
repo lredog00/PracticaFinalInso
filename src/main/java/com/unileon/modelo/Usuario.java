@@ -37,8 +37,9 @@ public class Usuario implements Serializable{
     @Column(name="password")
     private String password;
     
-    @Column(name="ultimaconexion")
+    
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="ultimaconexion", insertable = false)
     private Date ultimaConexion;
     
     @Column(name="estado")
