@@ -8,6 +8,7 @@ and open the template in the editor.
     Author     : LuisAngel
 */
 
+
 #principal{
     
     width: 1024px;
@@ -20,13 +21,41 @@ and open the template in the editor.
     text-align:center; 
     color: white;
 }
-#usuario{
-    top: 50%;
-    left: 50%;
+.usuario {
+    width: 360px;
+    height: 220px;
+    top: 30%;
+    left: 38%;
     position: absolute;
-    transform: translate(-50%, -50%);
-    box-sizing: border-box;
-    padding: auto;
-   
+    background-color: white;
+    border-radius: 8px;
     
+ 
 }
+
+.usuario button{
+    border-radius: 10px;
+    margin: 10px;
+    left: 100%;
+    top: 50%;
+}
+
+.usuario .enlace{
+    left: 38%;
+    top: 80%;
+    margin: 5px;
+    text-align: center;
+    position: absolute;
+    font-size: 14px;
+}
+
+.usuario input{
+    margin-top: 5px;
+}
+.usuario label{
+   color: #000000;
+   top: 8px;
+   padding: 10px;
+   
+}
+
