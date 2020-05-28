@@ -14,7 +14,9 @@
                 <h1>Registrarse como nuevo usuario</h1>
                               
                 <h:form>                  
-                      
+                      <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>  
                      <p:fieldset legend="Datos personales" style="margin-bottom:20px; border-color: transparent">
                         <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
                             
@@ -71,12 +73,11 @@
                     
                    
                     
-                    <!--
-                    <p:commandButton value="Resetear Valores" style="margin-right:40px;" >
-                        <p:ajax update="panel1, panel2" resetValues="true" />
-                    </p:commandButton>
-                    -->
+                    
                         
+                </h:form>
+                <h:form>
+                    <p:commandLink value="Volver" action="/index.xhtml?faces-redirect=true"/>
                 </h:form>
                
                     
