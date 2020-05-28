@@ -5,17 +5,16 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-    
-    <body>
+    <h:head>
+        <title>Registrar usuario</title>
+    </h:head>
+    <h:body>
 
-        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
-
-            <ui:define name="content">
-                <h1>Dar de alta un nuevo usuario</h1>
-               
-                
+       
+                <h1>Registrarse como nuevo usuario</h1>
+                              
                 <h:form>                  
-                     <p:messages id="messages" showDetail="true" closable="true">
+                      <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>  
                      <p:fieldset legend="Datos personales" style="margin-bottom:20px; border-color: transparent">
@@ -51,7 +50,7 @@
                             
                                     <p:outputLabel for="rol" value="Rol: " />
                                     <p:selectOneMenu value="#{usuarioController.rol.idRol}" id="rol" >
-                                        <f:selectItems value="#{usuarioController.listaDeRoles}" var="r" itemLabel="#{r.descripcion}" itemValue="#{r.idRol}"/>
+                                        <f:selectItems value="#{usuarioController.listaDeRolesUser}" var="r" itemLabel="#{r.descripcion}" itemValue="#{r.idRol}"/>
                                     </p:selectOneMenu> 
                                     <p:spacer></p:spacer>
 
@@ -70,22 +69,20 @@
                             </p:panelGrid>
                         </p:fieldset>
                        
-                    <p:commandButton value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" update="panel1, panel2"/>
-                    <p:commandButton value="Resetear valores" update="panel1, panel2" process="@this" style="margin:40px;" >
-                        <p:resetInput target="panel1, panel2" />
-                    </p:commandButton>
-                   
+                    <p:commandButton value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" action="/index.xhtml?faces-redirect=true" />
                     
                    
+                    
+                    
                         
+                </h:form>
+                <h:form>
+                    <p:commandLink value="Volver" action="/index.xhtml?faces-redirect=true"/>
                 </h:form>
                
                     
                 <h:outputScript library="js" name="calendario.js"/>
-            </ui:define>
-            
+           
 
-        </ui:composition>
-
-    </body>
+    </h:body>
 </html>

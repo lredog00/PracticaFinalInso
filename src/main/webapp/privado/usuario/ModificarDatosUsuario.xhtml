@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    
+    <body>
+
+        <ui:composition template="./../../WEB-INF/template/plantillaTemplate.xhtml">
+
+            <ui:define name="content">
+                <h1>Modifica tus datos usuario</h1>
+               
+                
+                <h:form>
+                     <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>
+                   
+                       
+                    <p:fieldset legend="Cambiar Nombre Usuario" style="margin-bottom:20px; border-color: transparent">
+                        <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
+                             <p:outputLabel for="us" value="Nombre de usuario: " />
+                            <p:inputText id="us" value="#{modificarDatosPersonalesController.usuario.user}" />  
+                        </p:panelGrid>
+                        
+                    </p:fieldset>
+                        
+                       
+                        
+                        <p:fieldset legend="Cambiar contraseña" style="margin-bottom:10px; border-color: transparent">
+                            <p:panelGrid id="panel2" columns="3" layout="tabular"  styleClass="ui-noborder">
+                                <p:outputLabel for="p" value="Contraseña actual: " />
+                                <p:password id="p" required="true" requiredMessage="Contraseña actual es un campo obligatorio" value="#{modificarDatosPersonalesController.password}" />
+                                 <p:spacer/>
+
+                                 <p:outputLabel for="pass1" value="Password: " />
+                                 <p:password id="pass1" match="pass2" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarDatosPersonalesController.passwordNueva}" />
+                                 <p:message for="pass1"/>
+
+                                 <p:outputLabel for="pass2" value="Repita contraseña: " />
+                                 <p:password id="pass2" />
+                                 <p:message for="pass2"/> 
+                             </p:panelGrid>
+                        </p:fieldset>
+                    <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarDatosPersonalesController.actualizarUsuario()}" update="panel1, panel2" />
+                                        
+                </h:form>
+               
+            </ui:define>
+            
+
+        </ui:composition>
+
+    </body>
+</html>

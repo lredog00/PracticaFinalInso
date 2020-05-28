@@ -6,10 +6,11 @@
 package com.unileon.controller;
 
 import com.unileon.EJB.CancionFacadeLocal;
+import com.unileon.EJB.ContenidoListaFacadeLocal;
 import com.unileon.modelo.Cancion;
+import com.unileon.modelo.ContenidoLista;
 import java.io.Serializable;
 import java.util.List;
-import java.util.Locale;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.view.ViewScoped;
@@ -26,6 +27,13 @@ public class CancionController implements Serializable{
     @Inject
     private Cancion can;
     private List<Cancion> listaCanciones;
+    
+        
+    private List<ContenidoLista> listaContenido;
+    
+    @EJB
+    private ContenidoListaFacadeLocal contenidoListaEJB;
+    
     @EJB
     private CancionFacadeLocal cancionEJB;
     
@@ -34,9 +42,19 @@ public class CancionController implements Serializable{
     @PostConstruct
     public void inicio(){
         listaCanciones=cancionEJB.findAll();
+        listaContenido = contenidoListaEJB.findAll();
         accion="R";
     }
 
+    public List<ContenidoLista> getListaContenido() {
+        return listaContenido;
+    }
+
+    public void setListaContenido(List<ContenidoLista> listaContenido) {
+        this.listaContenido = listaContenido;
+    }
+    
+    
     
     public String getAccion() {
         return accion;
@@ -77,8 +95,14 @@ public class CancionController implements Serializable{
         
        try{
            
-            cancionEJB.remove(can);
-            listaCanciones=cancionEJB.findAll();
+           for(ContenidoLista c : listaContenido){
+               if(c.getCancion().getIdCancion() == can.getIdCancion()){
+                   contenidoListaEJB.remove(c);
+               }
+           }
+           cancionEJB.remove(can);
+            
+           listaCanciones=cancionEJB.findAll();
             
         }catch(Exception e){
             System.out.println("error eliminar cancion"+e.getMessage());

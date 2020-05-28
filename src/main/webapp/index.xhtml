@@ -11,8 +11,12 @@
     </h:head>
     <h:body id="principal" style="background-image: url(resources/img/login.jpg)">
         <h1 id="titulo">BIENVENIDO A NUESTRA PÁGINA WEB</h1>
+        
         <h:form>
             <div id="usuario">
+                <p:messages id="messages" showDetail="true" closable="true">
+                    <p:autoUpdate />
+                 </p:messages> 
                 <p:panelGrid id = "panel" style="background-color: white" columns = "2" styleClass="ui-noborder showcase-text-align-center">
                     
                     <f:facet name="header">
@@ -25,7 +29,8 @@
                     <p:outputLabel for="pa" value = "Contraseña" />
                     <p:password id="pa" value = "#{indexController.usuario.password}" />
 
-                    <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>                    
+                    <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>
+                    <h:commandLink value="Registrarse" action="/RegistrarUsuario.softwareII?faces-redirect=true" />
                                       
 
                 </p:panelGrid>    
