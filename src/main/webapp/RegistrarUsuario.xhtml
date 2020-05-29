@@ -7,18 +7,25 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Registrar usuario</title>
+        <h:outputStylesheet library="css" name="registrarUsuario.css" />
     </h:head>
     <h:body>
 
-       
-                <h1>Registrarse como nuevo usuario</h1>
-                              
+                <h:form>
+                    <div style="margin: 20px">
+                        <h1>Registrarse como nuevo usuario</h1>
+                    
+                        <p:commandLink class="enlace" value="Volver" action="/index.xhtml?faces-redirect=true"/>
+                    </div>
+                    
+                </h:form>
+                       
                 <h:form>                  
                       <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>  
-                     <p:fieldset legend="Datos personales" style="margin-bottom:20px; border-color: transparent">
-                        <p:panelGrid id="panel1" columns="3" layout="tabular"  styleClass="ui-noborder">
+                     <p:fieldset legend="Datos personales" class="campo">
+                         <p:panelGrid class="panel1" columns="3" layout="tabular" styleClass="ui-noborder" >
                             
                                     <p:outputLabel for="nom" value="Nombre: " />
                                     <p:inputText id="nom" value="#{usuarioController.persona.nombre}" required="true" requiredMessage="Nombre es un campo obligatorio"/>
@@ -45,7 +52,7 @@
                                     
                         </p:panelGrid>
                     </p:fieldset>
-                    <p:fieldset legend="Datos acceso" style="margin-bottom:20px; border-color: transparent">
+                    <p:fieldset legend="Datos acceso" class="campo" >
                         <p:panelGrid id="panel2" columns="3" layout="tabular" styleClass="ui-noborder">
                             
                                     <p:outputLabel for="rol" value="Rol: " />
@@ -70,15 +77,9 @@
                         </p:fieldset>
                        
                     <p:commandButton value = "Registrar" actionListener = "#{usuarioController.insertarUsuario()}" action="/index.xhtml?faces-redirect=true" />
-                    
-                   
-                    
-                    
-                        
+                                   
                 </h:form>
-                <h:form>
-                    <p:commandLink value="Volver" action="/index.xhtml?faces-redirect=true"/>
-                </h:form>
+                
                
                     
                 <h:outputScript library="js" name="calendario.js"/>

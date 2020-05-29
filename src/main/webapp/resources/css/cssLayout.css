@@ -1,13 +1,16 @@
 
 #top {
     position: relative;
-    background-color: #036fab;
+    background-color: #c2dfef;
+    background: url("#{resource['img/fondoTop.jpg']}");
     color: white;
     padding: 5px;
     margin: 0px 0px 10px 0px;
+    text-align: center;
 }
 
 #bottom {
+    text-align: center;
     position: relative;
     background-color: #c2dfef;
     padding: 5px;
@@ -30,7 +33,7 @@
 
 .center_content {
     position: relative;
-    background-color: #dddddd;
+   
     padding: 5px;
 }
 
@@ -58,7 +61,7 @@
   text-decoration : underline;
 }
 
-#tabla {
+.tabla {
     margin-top: 30px; 
     margin-bottom: 185px; 
     margin-left: 10px; 
