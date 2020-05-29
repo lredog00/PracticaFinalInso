@@ -29,34 +29,34 @@
                     
                     
                      <p:outputLabel value="Usuarios disponibles en la aplicación" style="margin: 100px auto; text-decoration: line-through black; font-weight: bold;" /> 
-                    <p:dataTable id="tabla" var="usuario" value="#{usuarioController.listaDeUsuarios}"
+                    <p:dataTable class="tabla" id="tabla" var="usuario" value="#{usuarioController.listaDeUsuarios}"
                                  rows="10"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
                                  rowsPerPageTemplate="5,10,15" >
-                        <p:column headerText="Id" style="background-color: #CAB882">
+                        <p:column headerText="Id" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.idUsuario}" />
                         </p:column>
                         
-                        <p:column headerText="User" style="background-color: #CAB882">
+                        <p:column headerText="User" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.user}" />
                         </p:column>
                         
-                        <p:column headerText="Password" style="background-color: #CAB882">
+                        <p:column headerText="Password" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.password}" />
                         </p:column>
                         
                         
-                        <p:column headerText="Fecha" style="background-color: #CAB882">
+                        <p:column headerText="Fecha" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.ultimaConexion}" />
                         </p:column>
                         
-                        <p:column headerText="Rol" style="background-color: #CAB882">
+                        <p:column headerText="Rol" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.rol.descripcion}" />
                         </p:column>
                                                                        
-                        <p:column headerText="Datos persona" style="background-color: #CAB882">
+                        <p:column headerText="Datos persona" style="background-color: #FDEFA7">
                              <h:outputText value="#{usuario.persona.apellido1} #{usuario.persona.apellido2} #{usuario.persona.nombre}" />
                         </p:column>                   
                         

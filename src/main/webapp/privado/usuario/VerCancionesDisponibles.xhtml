@@ -22,19 +22,19 @@
                         
                         
                         
-                        <p:column headerText="Titulo" style="background-color: #CAB882">
+                        <p:column headerText="Titulo" style="background-color: #FDEFA7">
                             <h:outputText value="#{cancion.nombre}" />
                         </p:column>
                         
-                        <p:column headerText="Autor" style="background-color: #CAB882">
+                        <p:column headerText="Autor" style="background-color: #FDEFA7">
                             <h:outputText value="#{cancion.autor}" />
                         </p:column>
                         
-                        <p:column headerText="Genero" style="background-color: #CAB882">
+                        <p:column headerText="Genero" style="background-color: #FDEFA7">
                             <h:outputText value="#{cancion.genero}" />
                         </p:column>
                         
-                        <p:column headerText="Descripcion Breve" style="background-color: #CAB882">
+                        <p:column headerText="Descripcion Breve" style="background-color: #FDEFA7">
                             <p:commandLink value="Ver" actionListener="#{cancionController.establecerCancion(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                            <!-- <p:commandLink value="Ver" actionListener="#{cancionController.establecerCancion(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />-->
                         </p:column>

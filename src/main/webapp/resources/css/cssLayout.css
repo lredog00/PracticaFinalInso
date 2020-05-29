@@ -1,8 +1,8 @@
 
 #top {
     position: relative;
-    background-color: #c2dfef;
     background: url("#{resource['img/fondoTop.jpg']}");
+   
     color: white;
     padding: 5px;
     margin: 0px 0px 10px 0px;
@@ -14,7 +14,7 @@
     position: relative;
     background-color: #c2dfef;
     padding: 5px;
-    margin: 10px 0px 0px 0px;
+    
 }
 
 #left {
@@ -32,9 +32,21 @@
 }
 
 .center_content {
-    position: relative;
+    background: url("#{resource['img/principal.jpg']}");
+    background-size: 900px;
+    background-attachment: fixed;
    
+    
+    
+    
+    position: relative;
     padding: 5px;
+    max-height: 900px;
+    min-height: 400px;
+ 
+   
+   
+   
 }
 
 .left_content {
@@ -62,8 +74,9 @@
 }
 
 .tabla {
+   
     margin-top: 30px; 
-    margin-bottom: 185px; 
+    margin-bottom: 100px; 
     margin-left: 10px; 
     margin-right: 10px;
 }
