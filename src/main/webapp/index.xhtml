@@ -6,34 +6,50 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Login</title>
+       
         <h:outputStylesheet library="css" name="index.css" />
         
     </h:head>
-    <h:body id="principal" style="background-image: url(resources/img/login.jpg)">
+    <style>
+        body{
+            background-image: url(resources/img/login.jpg);
+            background-repeat: no-repeat;
+           width: 100%;
+           height: 100%;
+
+
+        }
+    </style>
+    <h:body id="principal">
+        
         <h1 id="titulo">BIENVENIDO A NUESTRA PÁGINA WEB</h1>
         
         <h:form>
-            <div id="usuario">
+            <div class="usuario">
                 <p:messages id="messages" showDetail="true" closable="true">
                     <p:autoUpdate />
                  </p:messages> 
-                <p:panelGrid id = "panel" style="background-color: white" columns = "2" styleClass="ui-noborder showcase-text-align-center">
+                
+                <p:panelGrid class = "panel" columns = "2" styleClass="ui-noborder showcase-text-align-center">
                     
                     <f:facet name="header">
-                       <p:outputLabel value = "Login" style="text-align:center" />
+                        
+                       <p:outputLabel value = "Login" style="text-align:center; " />
                     </f:facet>                              
-
+                    
                     <p:outputLabel for="us" value = "Usuario" />
                     <p:inputText id="us" value="#{indexController.usuario.user}"/>
 
                     <p:outputLabel for="pa" value = "Contraseña" />
                     <p:password id="pa" value = "#{indexController.usuario.password}" />
 
-                    <p:commandButton value="Entrar" action="#{indexController.verificarUsuario()}"/>
-                    <h:commandLink value="Registrarse" action="/RegistrarUsuario.softwareII?faces-redirect=true" />
-                                      
+                    <p:commandButton class="boton" value="Entrar" action="#{indexController.verificarUsuario()}"/>
+                    <p:spacer/>
+                    
+                             
 
-                </p:panelGrid>    
+                </p:panelGrid>
+                <h:commandLink class="enlace" value="Registrarse" action="/RegistrarUsuario.softwareII?faces-redirect=true" />
             </div>
         </h:form>
         

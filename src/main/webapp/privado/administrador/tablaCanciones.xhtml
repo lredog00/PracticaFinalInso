@@ -13,49 +13,46 @@
             <ui:define name="content">
                 <h1>Canciones Disponibles</h1>
                 <h:form id="frmPrincipal">
+                      <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>
+                    
                     <p:commandButton value="Nuevo" onclick="PF('wdialogo').show();"/>
-                    <p:dataTable var="cancion" value="#{cancionController.listaCanciones}" rows="10" id="tabla"
+                    <p:dataTable class="tabla" var="cancion" value="#{cancionController.listaCanciones}" rows="10" id="tabla"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
                                  rowsPerPageTemplate="5,10,15">
-                        <p:column headerText="Id" style="width:15px;">
+                        <p:column headerText="Id" style="width:15px; background-color: #FDEFA7;">
                             <h:outputText value="#{cancion.idCancion}" />
                         </p:column>
 
-                        <p:column headerText="Titulo" style="width:200px;">
+                        <p:column headerText="Titulo" style="width:200px; background-color: #FDEFA7;">
                             <h:outputText value="#{cancion.nombre}" />
                         </p:column>
 
-                        <p:column headerText="Autor" style="width:200px;">
+                        <p:column headerText="Autor" style="width:200px; background-color: #FDEFA7;">
                             <h:outputText value="#{cancion.autor}" />
                         </p:column>
 
-                        <p:column headerText="Genero" style="width:90px;">
+                        <p:column headerText="Genero" style="width:90px; background-color: #FDEFA7;">
                             <h:outputText value="#{cancion.genero}" />
                         </p:column>
                         
-                        <p:column headerText="Descripcion" style="width:290px;">
+                        <p:column headerText="Descripcion" style="width:290px; background-color: #FDEFA7;">
                             <h:outputText value="#{cancion.descripcion}" />
                         </p:column>
                         
-                        <p:column headerText="Modificar" style="width:90px;">
+                        <p:column headerText="Modificar" style="width:90px; background-color: #FDEFA7;">
                             <p:commandLink value="Modificar" actionListener="#{cancionController.establecerCancionModificar(cancion)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                         </p:column>
                         
-                         <p:column headerText="Eliminar" style="width:90px;">
+                         <p:column headerText="Eliminar" style="width:90px; background-color: #FDEFA7;">
                              <p:commandLink value="Eliminar" actionListener="#{cancionController.establecerCancionEliminar(cancion)}" oncomplete="PF('wdialogo').show();" 
                                             update=":frmDialogo" />
                         </p:column>
 
-                        <f:facet name="paginatorTopLeft">
-                            <p:commandButton type="button" icon="pi pi-refresh" />
-                        </f:facet>
-
-                        <f:facet name="paginatorBottomRight">
-                            <p:commandButton type="button" icon="pi pi-cloud-upload" />
-                        </f:facet>
-
+                        
                     </p:dataTable>
                 </h:form>
                 

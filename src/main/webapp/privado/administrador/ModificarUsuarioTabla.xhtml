@@ -14,40 +14,43 @@
                 <h1>Modifica cualquier usuario como SuperUsuario</h1>
                                
                 <h:form>
+                     <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>
                     
-                    <p:outputLabel value="Usuarios registrados en la aplicación" style="margin: 100px auto; font-weight: bold;" /> 
-                    <p:dataTable id="tabla" var="usuario" value="#{listarYFiltrarUsuariosController.listaDeUsuarios}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;"
+                    
+                    <p:dataTable class="tabla" id="tabla" var="usuario" value="#{listarYFiltrarUsuariosController.listaDeUsuarios}" 
                                  rows="10"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
                                  rowsPerPageTemplate="5,10,15" >
-                        <p:column headerText="Id" style="background-color: #CAB882">
+                        <p:column headerText="Id" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.idUsuario}" />
                         </p:column>
                         
-                        <p:column headerText="User" style="background-color: #CAB882">
+                        <p:column headerText="User" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.user}" />
                         </p:column>
                         
-                        <p:column headerText="Password" style="background-color: #CAB882">
+                        <p:column headerText="Password" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.password}" />
                         </p:column>
                         
                         
-                        <p:column headerText="Fecha" style="background-color: #CAB882">
+                        <p:column headerText="Fecha" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.ultimaConexion}" />
                         </p:column>
                         
-                        <p:column headerText="Rol" style="background-color: #CAB882">
+                        <p:column headerText="Rol" style="background-color: #FDEFA7">
                             <h:outputText value="#{usuario.rol.descripcion}" />
                         </p:column>
                                                                        
-                        <p:column headerText="Datos persona" style="background-color: #CAB882">
+                        <p:column headerText="Datos persona" style="background-color: #FDEFA7">
                              <h:outputText value="#{usuario.persona.apellido1} #{usuario.persona.apellido2} #{usuario.persona.nombre}" />
                         </p:column> 
                         
-                        <p:column headerText="Modificar" style="background-color: #CAB882">
+                        <p:column headerText="Modificar" style="background-color: #FDEFA7">
                             <h:commandLink value="Modificar" action="ModificarUsuarioComoAdmin" actionListener="#{listarYFiltrarUsuariosController.establecerUsuario(usuario)}"/>
                         </p:column>
                         

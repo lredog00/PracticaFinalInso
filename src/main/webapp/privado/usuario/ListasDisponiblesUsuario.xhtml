@@ -17,36 +17,36 @@
                     <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>
-                     <p:outputLabel value="Listas disponibles" style="margin: 100px auto; font-weight: bold;" /> 
+                     
                      <p:dataTable id="tabla1" var="lista" value="#{listasPersonalesController.listasPersonales}" style="margin-top: 30px; margin-bottom: 185px; margin-left: 10px; margin-right: 10px;"
                                  rows="10"
                                  paginator="true"
                                  paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
                                  currentPageReportTemplate="{startRecord}-{endRecord} de {totalRecords} registros"
                                  rowsPerPageTemplate="5,10,15" >
-                        <p:column headerText="Id" style="background-color: #CAB882" >
+                        <p:column headerText="Id" style="background-color: #FDEFA7" >
                             <h:outputText value="#{lista.idLista}" />
                         </p:column>
                         
-                        <p:column headerText="Nombre de la lista" style="background-color: #CAB882">
+                        <p:column headerText="Nombre de la lista" style="background-color: #FDEFA7;">
                             <h:outputText value="#{lista.nombreLista}" />
                         </p:column>
                         
-                        <p:column headerText="Descripción" style="background-color: #CAB882">
+                        <p:column headerText="Descripción" style="background-color: #FDEFA7">
                             <h:outputText value="#{lista.descripcion}" />
                         </p:column>
                         
                         
-                        <p:column headerText="Fecha De Creación" style="background-color: #CAB882">
+                        <p:column headerText="Fecha De Creación" style="background-color: #FDEFA7">
                             <h:outputText value="#{lista.fecha.date}/#{lista.fecha.month+1}/#{lista.fecha.year+1900}" />
                         </p:column>
                         
                                                                                             
-                        <p:column headerText="Datos persona" style="background-color: #CAB882">
+                        <p:column headerText="Datos persona" style="background-color: #FDEFA7">
                             <h:outputText value="#{lista.persona.apellido1} #{lista.persona.apellido2} #{lista.persona.nombre}" />
                         </p:column>
                          
-                        <p:column headerText="Canciones" style="background-color: #CAB882">
+                        <p:column headerText="Canciones" style="background-color: #FDEFA7">
                             <p:commandLink value="Ver Canciones" actionListener="#{contenidoListaController.establecerCancionesLista(lista)}" oncomplete="PF('wdialogo').show();" update=":frmDialogo" />
                         </p:column>
                                          

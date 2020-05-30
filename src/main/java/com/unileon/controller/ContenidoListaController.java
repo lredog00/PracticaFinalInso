@@ -143,8 +143,7 @@ public class ContenidoListaController implements Serializable{
     
      public void addCancionToLista(){
         try {
-            
-            System.out.println("cancion "+cancion.getIdCancion());           
+              
             for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
@@ -157,8 +156,7 @@ public class ContenidoListaController implements Serializable{
                     break;
                 }
             }
-           
-           boolean cancionrepetida=false;
+            boolean cancionrepetida=false;
            
             for (ContenidoLista cl: listaDeContenidosDeListas){
                 
@@ -167,10 +165,7 @@ public class ContenidoListaController implements Serializable{
                     FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error!", "Cancion ya se encuentra en la lista"));
                     break;
                 }
-                
             }
-            
-            
             if(!cancionrepetida){
                 contenidoLista.setCancion(cancion);
                 contenidoLista.setLista(lista);
@@ -196,7 +191,7 @@ public class ContenidoListaController implements Serializable{
                     break;
                 }
             }
-             for(Cancion c: listaDeCanciones){
+            for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
                     break;
