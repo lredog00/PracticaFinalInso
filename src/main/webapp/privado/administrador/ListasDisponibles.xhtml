@@ -20,7 +20,7 @@
                         
                     <div style="margin-bottom: 20px">
                         <p:outputLabel value = "Seleccione el id de la lista que desea eliminar "/>
-                        <p:selectOneMenu value="#{listaController.lista.idLista}">
+                        <p:selectOneMenu value="#{listaController.lista.idLista}" style="margin: 8px;">
                             <f:selectItems value="#{listaController.arrayDeListas}" var="l" itemLabel="#{l.idLista}" itemValue="#{l.idLista}"/>
                        </p:selectOneMenu>
                         <p:outputLabel value="&zwj; &zwj; &rarr; &zwj; &zwj;  "/>
@@ -28,7 +28,7 @@
                     </div>
                     
                     
-                     <p:outputLabel value="Listas disponibles en la aplicación" style="margin: 100px auto; font-weight: bold;" /> 
+                     
                      <p:dataTable class="tabla" id="tabla" var="lista" value="#{listaController.arrayDeListas}" 
                                  rows="10"
                                  paginator="true"

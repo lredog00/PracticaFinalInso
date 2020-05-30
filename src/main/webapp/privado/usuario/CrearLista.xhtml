@@ -16,7 +16,8 @@
                     <p:messages id="messages" showDetail="true" closable="true">
                             <p:autoUpdate />
                      </p:messages>
-                     <p:panelGrid id="p" columns="2" layout="tabular"  styleClass="ui-noborder" >
+                    <div class="panelG">
+                        <p:panelGrid id="p" columns="2" layout="tabular"  styleClass="ui-noborder" >
                             
                             <p:outputLabel for="nom" value="Nombre Lista: " />
                             <p:inputText id="nom" value="#{listaController.lista.nombreLista}" />
@@ -26,9 +27,10 @@
                            
                             <p:outputLabel for="persona" value="Persona" />
                             <p:inputText id="persona" value="#{listaController.usuario.persona.nombre}" readonly="true"/>
-                            
-                            
+                                                       
                         </p:panelGrid>
+                    </div>
+                     
                     <p:commandButton value="Crear Lista" actionListener="#{listaController.crearLista()}" />
                 </h:form>
             </ui:define>

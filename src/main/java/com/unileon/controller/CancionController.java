@@ -13,6 +13,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -84,6 +86,7 @@ public class CancionController implements Serializable{
         
         try{
             cancionEJB.create(can);
+            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Canción creada"));
             listaCanciones=cancionEJB.findAll();
         }catch(Exception e){
             System.out.println( "error al insertar la cancion" + e.getMessage());
@@ -101,6 +104,7 @@ public class CancionController implements Serializable{
                }
            }
            cancionEJB.remove(can);
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Se elimino la canción "));
             
            listaCanciones=cancionEJB.findAll();
             
@@ -113,6 +117,7 @@ public class CancionController implements Serializable{
         
        try{
            cancionEJB.edit(can);
+           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Canción modificada"));
            listaCanciones=cancionEJB.findAll();
         }catch(Exception e){
             System.out.println("error al modificar Cancion"+e.getMessage());

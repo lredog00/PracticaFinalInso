@@ -13,6 +13,10 @@
             <ui:define name="content">
                 <h1>Canciones Disponibles</h1>
                 <h:form id="frmPrincipal">
+                      <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>
+                    
                     <p:commandButton value="Nuevo" onclick="PF('wdialogo').show();"/>
                     <p:dataTable class="tabla" var="cancion" value="#{cancionController.listaCanciones}" rows="10" id="tabla"
                                  paginator="true"

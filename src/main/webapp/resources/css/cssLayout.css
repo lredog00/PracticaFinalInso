@@ -35,17 +35,10 @@
     background: url("#{resource['img/principal.jpg']}");
     background-size: 900px;
     background-attachment: fixed;
-   
-    
-    
-    
     position: relative;
     padding: 5px;
     max-height: 900px;
     min-height: 400px;
- 
-   
-   
    
 }
 
@@ -80,4 +73,22 @@
     margin-left: 10px; 
     margin-right: 10px;
 }
+.panelG{
+    border-radius: 8px; 
+    background-color: white; 
+    margin-right: 70%; 
+    height: 150px;
+}
+.campo {
+    
+   margin-bottom:20px; 
+   border-color: transparent; 
+   margin-right: 60%; 
+   border-radius: 8px;
+  
+}
 
+button{
+   margin: 8px;
+   
+}

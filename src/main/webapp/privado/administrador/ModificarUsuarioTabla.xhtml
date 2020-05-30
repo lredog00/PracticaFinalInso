@@ -14,6 +14,9 @@
                 <h1>Modifica cualquier usuario como SuperUsuario</h1>
                                
                 <h:form>
+                     <p:messages id="messages" showDetail="true" closable="true">
+                            <p:autoUpdate />
+                     </p:messages>
                     
                     <p:outputLabel value="Usuarios registrados en la aplicación" style="margin: 100px auto; font-weight: bold;" /> 
                     <p:dataTable class="tabla" id="tabla" var="usuario" value="#{listarYFiltrarUsuariosController.listaDeUsuarios}" 

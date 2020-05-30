@@ -15,19 +15,24 @@
                
                 
                 <h:form>
-                    <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
-                       
+                    <div class="panelG">
+                        <p:panelGrid columns="2" layout="tabular"  styleClass="ui-noborder">
+                            
+                            <p:spacer></p:spacer>
+                            <p:spacer></p:spacer>
                         
-                        <p:outputLabel for="us" value="Nombre de usuario: " />
-                        <p:inputText id="us" value="#{modificarUsuarioController.usuario.user}" />
-                        
-                        <p:outputLabel for="p" value="Contraseña actual: " />
-                        <p:outputLabel id="p" value="&zwj; &zwj; &rarr; &zwj; &zwj; #{modificarUsuarioController.usuario.password} "/>
-                        
-                         <p:outputLabel for="pass1" value="Password: " />
-                         <p:password redisplay="true" id="pass1" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarUsuarioController.usuario.password}" />
-                         
-                    </p:panelGrid> 
+                            <p:outputLabel for="us" value="Nombre de usuario: " />
+                            <p:inputText id="us" value="#{modificarUsuarioController.usuario.user}" />
+
+                            <p:outputLabel for="p" value="Contraseña actual: " />
+                            <p:outputLabel id="p" value="&zwj; &zwj; &rarr; &zwj; &zwj; #{modificarUsuarioController.usuario.password} "/>
+
+                             <p:outputLabel for="pass1" value="Password: " />
+                             <p:password redisplay="true" id="pass1" feedback="true" validatorMessage="Las claves no coinciden" value="#{modificarUsuarioController.usuario.password}" />
+
+                        </p:panelGrid> 
+                    </div>
+                    
                     
                     <p:commandButton style="margin: 30px" value="Modificar" actionListener="#{modificarUsuarioController.actualizarUsuario()}" action="ModificarUsuarioTabla"/>
                     
