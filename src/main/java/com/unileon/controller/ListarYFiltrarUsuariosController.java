@@ -5,20 +5,14 @@
  */
 package com.unileon.controller;
 
-import com.unileon.EJB.RolFacadeLocal;
 
 import com.unileon.EJB.UsuarioFacadeLocal;
-import com.unileon.modelo.Persona;
-import com.unileon.modelo.Rol;
 import com.unileon.modelo.Usuario;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
-import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 

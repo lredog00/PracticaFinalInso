@@ -8,7 +8,6 @@ package com.unileon.controller;
 
 import com.unileon.EJB.UsuarioFacadeLocal;
 import com.unileon.modelo.Usuario;
-
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;

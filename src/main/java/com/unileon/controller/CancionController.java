@@ -89,7 +89,7 @@ public class CancionController implements Serializable{
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Canción creada"));
             listaCanciones=cancionEJB.findAll();
         }catch(Exception e){
-            System.out.println( "error al insertar la cancion" + e.getMessage());
+            System.out.println( "Error al insertar la cancion" + e.getMessage());
         }
         
     }
@@ -109,7 +109,7 @@ public class CancionController implements Serializable{
            listaCanciones=cancionEJB.findAll();
             
         }catch(Exception e){
-            System.out.println("error eliminar cancion"+e.getMessage());
+            System.out.println("Error eliminar cancion"+e.getMessage());
         }
     }
     
@@ -120,7 +120,7 @@ public class CancionController implements Serializable{
            FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Aviso", "Canción modificada"));
            listaCanciones=cancionEJB.findAll();
         }catch(Exception e){
-            System.out.println("error al modificar Cancion"+e.getMessage());
+            System.out.println("Error al modificar Cancion"+e.getMessage());
         }
     }
      
