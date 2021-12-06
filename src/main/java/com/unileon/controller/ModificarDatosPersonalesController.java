@@ -10,7 +10,6 @@ import com.unileon.EJB.PersonaFacadeLocal;
 import com.unileon.EJB.UsuarioFacadeLocal;
 import com.unileon.modelo.Persona;
 import com.unileon.modelo.Usuario;
-
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -40,8 +39,8 @@ public class ModificarDatosPersonalesController implements Serializable{
     @Inject
     private Usuario usuario;
     
-    private String password;
-    private String passwordNueva;
+    private String password; //Contraseña actual
+    private String passwordNueva; //Contraseña nueva 
     
     //Me traigo toda la clase con los valores que tenia eso es la inyeccion de dependencias
     @Inject

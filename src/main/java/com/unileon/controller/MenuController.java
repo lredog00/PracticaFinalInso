@@ -15,12 +15,10 @@ import java.util.Iterator;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import org.primefaces.model.menu.DefaultMenuItem;
-
 import org.primefaces.model.menu.DefaultMenuModel;
 import org.primefaces.model.menu.DefaultSubMenu;
 import org.primefaces.model.menu.MenuModel;
@@ -61,15 +59,12 @@ public class MenuController implements Serializable{
             if(menuActual.getTipo().equals("I")){
                 DefaultMenuItem item = new DefaultMenuItem(menuActual.getNombre());
                 if(menuActual.getUrl()!=null){
-                    item.setUrl(menuActual.getUrl());
-                   
+                    item.setUrl(menuActual.getUrl());                   
                 }else{
-                    item.setUrl("/");
-                   
+                    item.setUrl("/");                   
                 }
                  if(menuActual.getIdMenu_Menu() == null){
                      modelo.addElement(item);
-
                 }
             }
             if(menuActual.getTipo().equals("S")){

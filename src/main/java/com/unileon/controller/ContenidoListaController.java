@@ -65,8 +65,7 @@ public class ContenidoListaController implements Serializable{
     public void init(){
         listaDeCanciones = cancionEJB.findAll();
         arrayListas = listaEJB.findAll();
-        listaDeContenidosDeListas = contenidoListaEJB.findAll();
-        
+        listaDeContenidosDeListas = contenidoListaEJB.findAll();      
        
         listasPersonales = objetoDeListasPersonalesController.getListasPersonales();
        
@@ -79,7 +78,6 @@ public class ContenidoListaController implements Serializable{
     public void setListasPersonales(List<Lista> listasPersonales) {
         this.listasPersonales = listasPersonales;
     }
-
     
     
     public ContenidoLista getContenidoLista() {
@@ -138,16 +136,14 @@ public class ContenidoListaController implements Serializable{
         this.cancionesDeUnaLista = cancionesDeUnaLista;
     }
     
-    
-    
-    
-     public void addCancionToLista(){
+       
+    public void addCancionToLista(){
         try {
               
             for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
-                    break; //Faltaba brak
+                    break; 
                 }
             }
             for(Lista l : arrayListas){
@@ -178,9 +174,10 @@ public class ContenidoListaController implements Serializable{
                 
             
         } catch (Exception e) {
-            System.out.println("error al añadir "+e.getMessage());
+            System.out.println("Error al añadir canción a la lista"+e.getMessage());
         }
     }
+    
     public void eliminarCancionDeLista(){
         try {
             
@@ -194,8 +191,7 @@ public class ContenidoListaController implements Serializable{
             for(Cancion c: listaDeCanciones){
                 if(c.getIdCancion() == cancion.getIdCancion()){
                     cancion = c;
-                    break;
-                   
+                    break;                   
                 }
             }
              
@@ -203,10 +199,8 @@ public class ContenidoListaController implements Serializable{
              
             for (ContenidoLista cl: listaDeContenidosDeListas){
                
-                
                 if(cl.getLista().getIdLista()==lista.getIdLista()&&cancion.getIdCancion()==cl.getCancion().getIdCancion()){
-                    //eliminar
-                    System.out.println("entra");
+                    
                     contenidoLista=cl;
                     contenidoListaEJB.remove(contenidoLista);                   
                     listaDeContenidosDeListas = contenidoListaEJB.findAll();
@@ -224,7 +218,7 @@ public class ContenidoListaController implements Serializable{
             }
             
         } catch (Exception e) {
-            System.out.println("error al añadir "+e.getMessage());
+            System.out.println("Error al eliminar canción de lista "+e.getMessage());
         }
     }
     
@@ -235,11 +229,6 @@ public class ContenidoListaController implements Serializable{
             if(c.getLista().getIdLista()==lista.getIdLista()){
                 cancionesDeUnaLista.add(c.getCancion());
             }
-        }
-        
-        
+        } 
     }
-    
-    
-    
 }
